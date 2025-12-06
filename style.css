@@ -1,97 +1,41 @@
-body {
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  margin: 0;
-  padding: 0;
-  color: #333;
-  background: #fff;
+/* ----------------- 基础布局 ----------------- */
+body { 
+    font-family: 'Segoe UI', sans-serif; 
+    margin:0; padding:0; 
+    background:#F8FAFF; 
+    color:#333333; 
 }
-
-header {
-  display: flex;
-  justify-content: space-between;
-  padding: 20px 40px;
-  border-bottom: 1px solid #eee;
-  align-items: center;
+header { 
+    display:flex; justify-content:space-between; padding:20px 40px; 
+    background:#fff; box-shadow:0 2px 8px rgba(0,0,0,0.08);
 }
-
-header .logo {
-  font-size: 24px;
-  font-weight: bold;
+header a { 
+    margin-left:20px; text-decoration:none; color:#333; font-weight:500; transition:0.3s;
 }
+header a:hover { color:#5A8DEE; transform:scale(1.05); }
+header .logo a { font-weight:bold; font-size:20px; color:#5A8DEE; }
 
-header nav a {
-  margin-left: 20px;
-  text-decoration: none;
-  color: #333;
-  font-weight: 500;
+/* ----------------- 简历布局 ----------------- */
+#profile { display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; padding-top:80px; }
+.profile-left { width:60%; padding-right:20px; }
+.profile-right { width:35%; }
+.profile-right img { width:100%; border-radius:12px; box-shadow:0 8px 20px rgba(0,0,0,0.12); transition:transform 0.3s; }
+.profile-right img:hover { transform:scale(1.03); }
+
+/* ----------------- 高级配色文字 ----------------- */
+.highlight { color:#5A8DEE; font-weight:bold; }
+.important { color:#FF758F; font-weight:bold; }
+
+/* ----------------- 工作经历 ----------------- */
+.job { margin-bottom:40px; padding:20px; background:#fff; border-radius:12px; box-shadow:0 4px 12px rgba(0,0,0,0.06); transition:transform 0.3s; }
+.job:hover { transform:translateY(-3px); }
+.job ul { margin-top:10px; list-style: disc inside; }
+
+/* ----------------- 作品集 ----------------- */
+.work-filters { margin-bottom:25px; }
+.work-filters button { 
+    padding:10px 18px; margin-right:10px; border:1px solid #5A8DEE; 
+    background:#fff; color:#5A8DEE; border-radius:8px; cursor:pointer; 
+    transition:0.3s; font-weight:500;
 }
-
-.hero {
-  display: flex;
-  justify-content: space-between;
-  padding: 60px 40px;
-  align-items: center;
-}
-
-.hero-left {
-  max-width: 60%;
-}
-
-.hero-left h1 { font-size: 36px; margin: 0; }
-.hero-left h2 { font-size: 20px; margin: 10px 0; color: #666; }
-.hero-left .tagline { margin: 10px 0; font-style: italic; color: #999; }
-.hero-left p.skills { margin-top: 20px; font-weight: 500; }
-
-.hero-right img {
-  max-width: 200px;
-  border-radius: 8px;
-}
-
-section {
-  padding: 40px;
-  border-bottom: 1px solid #eee;
-}
-
-section h2 {
-  font-size: 28px;
-  margin-bottom: 20px;
-}
-
-section ul {
-  list-style: disc;
-  padding-left: 20px;
-}
-
-.job { margin-bottom: 40px; }
-
-/* 密码保护样式 */
-#password-container {
-  position: fixed;
-  top:0; left:0;
-  width:100%; height:100%;
-  background:#f9f9f9;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-}
-
-#password-box {
-  padding:40px;
-  border:1px solid #ddd;
-  background:#fff;
-  border-radius:8px;
-  text-align:center;
-}
-
-#password-box input {
-  padding:10px;
-  margin-top:10px;
-  width:200px;
-  font-size:16px;
-}
-#password-box button {
-  padding:10px 20px;
-  margin-top:10px;
-  font-size:16px;
-  cursor:pointer;
-}
+.work-fil

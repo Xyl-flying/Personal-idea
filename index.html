@@ -1,162 +1,38 @@
 <!DOCTYPE html>
-<html lang="zh">
+<html lang="zh-CN">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>薛亚丽 - 个人作品集</title>
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
+<meta charset="UTF-8">
+<title>薛亚丽 作品集</title>
+<style>
+/* ----------------- 基础布局 ----------------- */
+body { font-family: 'Segoe UI', sans-serif; margin:0; padding:0; background:#fdfdfd; color:#333; }
+header { display:flex; justify-content:space-between; padding:20px 40px; background:#ffffff; box-shadow:0 2px 6px rgba(0,0,0,0.05);}
+header a { margin-left:20px; text-decoration:none; color:#333; font-weight:500; }
+header .logo a { font-weight:bold; font-size:20px; }
+section { padding:60px 40px; max-width:1200px; margin:0 auto; }
+h1,h2,h3 { margin:10px 0; }
+.highlight { color:#5a8dee; font-weight:bold; }
 
-<!-- 前端密码保护 -->
-<div id="password-container">
-  <div id="password-box">
-    <h2>Enter Password</h2>
-    <input type="password" id="password-input" placeholder="Password">
-    <button onclick="checkPassword()">Submit</button>
-    <p id="password-message" style="color:red;"></p>
-  </div>
-</div>
+/* ----------------- 简历布局 ----------------- */
+#profile { display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; }
+.profile-left { width:60%; padding-right:20px; }
+.profile-right { width:35%; }
+.profile-right img { width:100%; border-radius:8px; box-shadow:0 6px 15px rgba(0,0,0,0.1); }
 
-<div id="site-content" style="display:none;">
+/* ----------------- 工作经历 ----------------- */
+.job { margin-bottom:30px; }
+.job ul { margin-top:10px; list-style: disc inside; }
 
-  <!-- Header -->
-  <header>
-    <div class="logo">薛亚丽</div>
-    <nav>
-      <a href="#profile">Profile</a>
-      <a href="#works">Works</a>
-      <a href="#about">About</a>
-      <a href="#contact">Contact</a>
-    </nav>
-  </header>
+/* ----------------- 作品集 ----------------- */
+.work-filters { margin-bottom:20px; }
+.work-filters button { padding:8px 16px; margin-right:10px; border:1px solid #5a8dee; background:#fff; color:#5a8dee; border-radius:6px; cursor:pointer; transition:0.3s; font-weight:500;}
+.work-filters button.active, .work-filters button:hover { background:#5a8dee; color:#fff; }
+.work-items { display:flex; flex-wrap:wrap; gap:20px; }
+.work-item { width:calc(33% - 20px); text-align:center; }
+.work-item video { width:100%; border-radius:8px; box-shadow:0 6px 15px rgba(0,0,0,0.1); transition: transform 0.3s; }
+.work-item video:hover { transform:scale(1.05); }
+.fade-in { opacity:0; transform:translateY(20px); animation:fadeIn 0.6s forwards; }
+@keyframes fadeIn { to { opacity:1; transform:translateY(0); } }
 
-  <!-- 第一屏：简历主区 -->
-  <section id="profile" class="hero">
-    <div class="hero-left">
-      <h1>薛亚丽</h1>
-      <h2>视频广告创意设计师 / 游戏买量素材专家</h2>
-      <p class="tagline">专注海外市场视频广告创意策划与制作</p>
-      <p>电话: +8613159539391</p>
-      <p>邮箱: Yali7531@163.com</p>
-      <p class="skills">AE, PS, AI 各主流软件, UE, Unity, Maya, 3ds Max, Blender</p>
-    </div>
-    <div class="hero-right">
-      <img src="assets/images/01.jpg" alt="薛亚丽照片">
-    </div>
-  </section>
-
-  <!-- 个人优势 -->
-  <section id="advantages">
-    <h2>个人优势</h2>
-    <ul>
-      <li>近5年的游戏买量行业经验，熟悉欧美及亚太日韩港台市场</li>
-      <li>擅长平面、视频、3D结合，独立创意策划与视频设计能力强</li>
-      <li>适应能力和执行力强，注重细节把握，表达沟通与协调能力优秀</li>
-      <li>团队精神佳，责任心强，抗压能力突出</li>
-      <li>自学游戏特效及 AIGC 工具，快速掌握新技能</li>
-      <li>ACG、动漫、电影、游戏爱好者</li>
-    </ul>
-  </section>
-
-  <!-- 教育背景 -->
-  <section id="education">
-    <h2>教育背景</h2>
-    <p>本科，吉林动画学院</p>
-    <ul>
-      <li>第11届全国大学生广告艺术大赛《奇迹东方今朝义乌》动画类全国三等奖</li>
-      <li>吉林省“创先争优”表彰大会获“优秀学生干部”</li>
-      <li>吉林省五四“创先争优”表彰大会荣获“优秀学生”</li>
-    </ul>
-  </section>
-
-  <!-- 工作经验 -->
-  <section id="experience">
-    <h2>工作经验</h2>
-
-    <!-- 美图公司 -->
-    <div class="job">
-      <h3>美图公司 | 海外渠道增长部 | 2025.04~至今</h3>
-      <p><strong>工作描述：</strong></p>
-      <ul>
-        <li>全面负责全球买量素材创意策略，从目标用户角度设计并优化广告创意</li>
-        <li>独立制定素材策略与创意规划，结合投放数据实时优化素材方向</li>
-        <li>深入分析竞品与市场动态，洞察用户行为与心理画像，精准迭代创意方案</li>
-        <li>领导创意产出和外包团队，包括脚本分镜编写、效果验收及素材整合</li>
-        <li>主要负责产品：Meitu, BeautyCam, Wink, Vmake, Starii, Snappass, X-design</li>
-        <li>投放地区：欧美（美国、巴西、墨西哥）、亚太（日本、韩国、台湾）、东南亚（泰国、越南、印度尼西亚）</li>
-        <li>海外平台投放：Facebook、Google、TikTok、Line、Yahoo 等</li>
-        <li>视频创意策划与制作全流程把控</li>
-        <li>担任团队导师角色，负责新人培养、创意指导、技术培训及市场策略分享</li>
-      </ul>
-      <p><strong>业绩成就：</strong></p>
-      <ul>
-        <li>广告素材日消耗达 2000+ 美金</li>
-        <li>主动引入并熟练运用 AIGC 新工具（Sora、Gemini 等），将创意制作效率提升数倍</li>
-        <li>通过日本大头贴效果调研报告，推动产品端迭代，实现本地化大头贴效果落地并提升用户体验</li>
-        <li>自主开发高效小工具，可一键改尺寸、加落版、替换背景音乐，提高整体素材处理效率</li>
-        <li>多次带领团队突破创意瓶颈，实现高效产出和跨部门协作</li>
-      </ul>
-    </div>
-
-    <!-- 深圳冰川网络 -->
-    <div class="job">
-      <h3>深圳冰川网络股份有限公司 | 海外发行部门 | 2022.07~2024.10</h3>
-      <p><strong>工作描述：</strong></p>
-      <ul>
-        <li>主导海外游戏买量素材创意策略，从用户视角出发设计全链路广告创意</li>
-        <li>定期分析数据（消耗、点击、转化、回收），优化广告素材方向</li>
-        <li>主要负责产品：《Merge Tour》,《Impact: Infinity Legends》,《X-Hero》,《Cash Hunter》</li>
-        <li>跨平台（Facebook/Google/TikTok/Line/Yahoo）视频制作及创意把控</li>
-        <li>负责团队新人培训、创意指导及技术支持</li>
-      </ul>
-      <p><strong>业绩成就：</strong></p>
-      <ul>
-        <li>《Merge Tour》广告素材点击率达 3%-4%，其他素材 Facebook 平台点击率稳定在 1%</li>
-        <li>年度素材消耗 150~200 万美金；《Impact: Infinity Legends》季度消耗 50 万美金</li>
-        <li>主导日语地区从 0-1 宣发，实现快速市场突破</li>
-        <li>创新引入 AIGC 工具及插件，为团队提供全新创意方向</li>
-        <li>多次带领团队探索创意边界，实现广告效果持续提升</li>
-      </ul>
-    </div>
-
-    <!-- 北京枫悦互动 -->
-    <div class="job">
-      <h3>北京枫悦互动科技有限公司 | 用户增长部门 | 2020.12~2022.06</h3>
-      <p><strong>工作描述：</strong></p>
-      <ul>
-        <li>负责《Chapters》海外各平台视频广告创意策划及制作</li>
-        <li>主导欧美女性用户广告创意设计，分析用户痛点与心理偏好</li>
-        <li>跟踪广告投放数据，优化素材表现并提供创意迭代方案</li>
-      </ul>
-      <p><strong>业绩成就：</strong></p>
-      <ul>
-        <li>广告素材点击率稳定 1%</li>
-        <li>成功设计“欧美型霸总故事”广告系列，深度契合目标用户心理</li>
-      </ul>
-    </div>
-  </section>
-
-  <!-- 作品集区域（可后置） -->
-  <section id="works">
-    <h2>作品集</h2>
-    <p>这里可以展示你的视频和图片作品（后续更新）</p>
-  </section>
-
-</div>
-
-<script>
-  const PASSWORD = "1234"; // 可自定义密码
-  function checkPassword() {
-    const input = document.getElementById('password-input').value;
-    if(input === PASSWORD) {
-      document.getElementById('password-container').style.display = 'none';
-      document.getElementById('site-content').style.display = 'block';
-    } else {
-      document.getElementById('password-message').innerText = "密码错误，请重试";
-    }
-  }
-</script>
-
-</body>
-</html>
+/* ----------------- 前端密码 ----------------- */
+#password-overlay { position:fixed; top:0; left:0; width:100%; heig
