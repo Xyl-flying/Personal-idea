@@ -1,98 +1,73 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-    <meta charset="UTF-8">
-    <title>薛亚丽 作品集</title>
-    <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>薛亚丽 作品集</title>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
 
 <!-- 前端密码保护 -->
 <div id="password-overlay">
-    <div class="password-box">
-        <input type="password" id="password-input" placeholder="请输入密码">
-        <button id="password-submit">进入</button>
-    </div>
+  <div class="password-box">
+    <label for="password-input">请输入密码：</label>
+    <input type="password" id="password-input">
+    <button id="password-submit">提交</button>
+  </div>
 </div>
 
+<!-- 主站内容 -->
 <div id="site-content" style="display:none;">
 
-    <!-- Header -->
-    <header>
-        <div class="logo"><a href="#">关于我的一切</a></div>
-        <nav>
-            <a href="#profile">简介</a>
-            <a href="#experience">工作经历</a>
-            <a href="#works">作品集</a>
-        </nav>
-    </header>
+<header>
+  <div class="logo"><a href="#">薛亚丽</a></div>
+  <nav>
+    <a href="#profile">简介</a>
+    <a href="#work">作品集</a>
+  </nav>
+</header>
 
-    <!-- 简历部分 -->
-    <section id="profile">
-        <div class="profile-left">
-            <h1>薛亚丽</h1>
-            <h3>游戏买量创意设计师</h3>
-            <p>电话：📞 +8613159539391</p>
-            <p>邮箱：✉️ Yali7531@163.com</p>
+<section id="profile">
+  <div class="profile-left">
+    <h1>薛亚丽</h1>
+    <h2 class="highlight">AE / PS / UE / Unity / Maya / 3Dmax / Blender</h2>
+    <p>4年游戏买量行业经验，熟悉欧美及亚太市场，独立创意策划和视频设计能力。</p>
+    <p><span class="important">电话：</span>📞 +8613159539391</p>
+    <p><span class="important">邮箱：</span>✉️ Yali7531@163.com</p>
+  </div>
+  <div class="profile-right">
+    <img src="assets/images/01.jpg" alt="薛亚丽">
+  </div>
+</section>
 
-            <h3>职业技能</h3>
-            <p>AE, PS, 各主流AI软件, UE, Unity, Maya, 3DMax, Blender</p>
+<section id="work">
+  <h2>作品集</h2>
+  <div class="work-filters">
+    <button class="filter-btn active" data-category="all">全部</button>
+    <button class="filter-btn" data-category="videos">影像相关</button>
+    <button class="filter-btn" data-category="chapters">Chapters</button>
+    <button class="filter-btn" data-category="pv">PV</button>
+    <button class="filter-btn" data-category="slots">Slots</button>
+    <button class="filter-btn" data-category="composite">合成类</button>
+    <button class="filter-btn" data-category="mini">小游戏</button>
+  </div>
 
-            <h3>个人优势</h3>
-            <p>4年游戏买量行业经验，熟悉欧美及亚太（日本、韩国、台湾）和东南亚（泰国、越南、印度尼西亚）市场；平面、视频、3D创意整合能力强，独立策划与设计能力突出；学习能力强，团队合作与抗压能力优秀。</p>
+  <div class="work-items">
+    <div class="work-item videos">
+      <video controls src="assets/videos/sample-video.mp4"></video>
+      <p>示例视频1</p>
+    </div>
+    <div class="work-item chapters">
+      <video controls src="assets/videos/sample-chapters.mp4"></video>
+      <p>示例Chapters</p>
+    </div>
+    <!-- 依次添加更多作品视频 -->
+  </div>
+</section>
 
-            <h3>教育背景</h3>
-            <p>本科，吉林动画学院</p>
-            <ul>
-                <li>第11届全国大学生广告艺术大赛 动画类全国三等奖</li>
-                <li>吉林省“创先争优”优秀学生干部</li>
-                <li>吉林省五四“创先争优”优秀学生</li>
-            </ul>
-        </div>
-        <div class="profile-right">
-            <img src="assets/images/01.jpg" alt="薛亚丽">
-        </div>
-    </section>
+</div>
 
-    <!-- 工作经历 -->
-    <section id="experience">
-        <h2>工作经历</h2>
-
-        <div class="job">
-            <h3>美图公司 海外渠道增长部（2025/04 - 至今）</h3>
-            <p>负责全球投放素材创意、视频制作、竞品分析、市场调研、创意迭代与外包对接；主要产品 meitu, beautyCam, wink, Vmake, Starii, Snappass, X-design。</p>
-            <ul>
-                <li>广告素材日消耗2000+美金</li>
-                <li>引入AIGC工具优化素材</li>
-                <li>反向推动产品端大头贴功能迭代</li>
-            </ul>
-        </div>
-
-        <div class="job">
-            <h3>深圳冰川网络股份有限公司 海外发行部门（2022/07 - 2024/10）</h3>
-            <p>设计游戏买量素材创意，跟踪广告投放效果并优化；负责新人培养与创意指导，主要产品《Merge Tour》、《Impact: Infinity Legends》、《X-Hero》、《Cash Hunter》。</p>
-            <ul>
-                <li>个人素材点击率3%-4%，年度消耗150~200W美金</li>
-                <li>参与日语市场0-1宣发，持续迭代创意方向</li>
-            </ul>
-        </div>
-
-        <div class="job">
-            <h3>北京枫悦互动科技有限公司 用户增长部门（2020/12 - 2022/06）</h3>
-            <p>负责《Chapters》海外广告创意策划及视频制作，深挖欧美女性用户需求，优化广告效果。</p>
-            <ul>
-                <li>广告素材点击率稳定1%</li>
-            </ul>
-        </div>
-
-    </section>
-
-    <!-- 作品集 -->
-    <section id="works">
-        <h2>作品集</h2>
-
-        <div class="work-filters">
-            <button class="filter-btn active" data-category="all">全部</button>
-            <button class="filter-btn" data-category="video">影像相关</button>
-            <button class="filter-btn" data-category="chapters">Chapters</button>
-            <button class="filter-btn" data-category="pv">PV</button>
+<script src="script.js"></script>
+</body>
+</html>

@@ -1,4 +1,4 @@
-// 前端密码保护
+// ----------------- 前端密码保护 -----------------
 const passwordOverlay = document.getElementById('password-overlay');
 const siteContent = document.getElementById('site-content');
 const passwordInput = document.getElementById('password-input');
@@ -14,7 +14,7 @@ passwordSubmit.addEventListener('click', () => {
     }
 });
 
-// 作品集分类切换
+// ----------------- 作品集分类切换 -----------------
 const filterButtons = document.querySelectorAll('.filter-btn');
 const workItems = document.querySelectorAll('.work-item');
 
