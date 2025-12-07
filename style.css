@@ -1,11 +1,11 @@
-/* ----------------- CSS 变量定义 (高级配色与间距) ----------------- */
+/* ----------------- CSS 变量定义 (全新配色与间距) ----------------- */
 :root {
-    --primary-color: #3B82F6; /* 主色调：专业蓝色 (Tailwind Blue 500) */
-    --accent-color: #F87171; /* 强调色：柔和红色 (成就/时间点) */
-    --background-light: #F9FAFB; /* 背景色：极浅灰色 */
+    --primary-color: #06B6D4; /* 主色调：青色/湖水绿 */
+    --accent-color: #FBBF24; /* 强调色：琥珀色/金色 (用于数据、悬停) */
+    --background-light: #F0F9FF; /* 背景色：极浅淡蓝 */
     --background-card: #FFFFFF; /* 卡片背景色 */
-    --text-dark: #1F2937; /* 文本颜色：深灰，高对比度 */
-    --spacing-huge: 100px;
+    --text-dark: #1F2937; /* 文本颜色：深灰蓝 */
+    --spacing-huge: 120px;
     --spacing-large: 60px;
     --spacing-medium: 30px;
 }
@@ -35,6 +35,20 @@ h1, h2, h3 {
     font-weight: 700;
 }
 
+/* 文本强调 */
+.highlight {
+    color: var(--primary-color);
+    font-weight: 800;
+}
+.emphasis {
+    font-weight: 700; /* 加粗 */
+    color: var(--text-dark);
+}
+.highlight-data {
+    color: var(--accent-color);
+    font-weight: 800;
+}
+
 /* ----------------- Header ----------------- */
 header {
     background: var(--background-card);
@@ -48,32 +62,37 @@ header {
     align-items: center;
 }
 
-.logo {
-    font-weight: 800; 
+.logo a {
+    font-weight: 900; 
     font-size: 1.6rem;
     color: var(--primary-color);
 }
 
 header nav a {
-    margin-left: 25px;
+    margin-left: 30px;
     font-size: 1rem;
+    font-weight: 600;
     color: var(--text-dark);
-    transition: color 0.2s;
+    transition: color 0.3s, transform 0.3s;
 }
 
 header nav a:hover {
     color: var(--primary-color);
+    transform: translateY(-2px);
 }
 
-/* ----------------- 简历主区 (Hero/Profile) ----------------- */
+/* ----------------- 简介主区 (Profile) - 构图对齐 ----------------- */
 #profile {
     display: grid;
-    /* 非对称构图：左侧信息宽，右侧图片窄 */
-    grid-template-columns: 2.5fr 1.5fr; 
+    /* 1:1.2 非对称构图 */
+    grid-template-columns: 1.2fr 1fr; 
     gap: var(--spacing-large);
     padding-top: var(--spacing-huge);
     padding-bottom: var(--spacing-large);
-    border-bottom: 2px solid #E5E7EB;
+}
+
+.hero-left {
+    padding-top: 50px; /* 向上对齐照片顶部 */
 }
 
 .hero-left h1 {
@@ -85,26 +104,41 @@ header nav a:hover {
 
 .hero-left h2 {
     font-size: 1.7rem;
-    color: var(--text-dark);
+    color: #4B5563;
     margin-bottom: 15px;
     font-weight: 400;
-}
-
-.highlight {
-    color: var(--primary-color);
-    font-weight: 700;
 }
 
 .tagline {
     font-size: 1.2rem !important;
     font-weight: 500;
     margin-bottom: 30px !important;
-    color: #4B5563 !important;
+    color: var(--text-dark) !important;
+}
+
+/* 联系信息 - 图标样式 */
+.contact-info p {
+    font-size: 1rem;
+    margin-bottom: 8px;
+    color: #4B5563;
+}
+.contact-info i {
+    color: var(--primary-color);
+    margin-right: 10px;
+    width: 18px; /* 保持图标宽度统一 */
+    text-align: center;
+}
+.contact-info {
+    margin-top: 20px;
+    border-top: 1px solid #E5E7EB;
+    padding-top: 20px;
 }
 
 /* 技能标签栏 */
 .skills-bar {
-    margin-bottom: 40px;
+    margin-top: 30px;
+    border-top: 1px solid #E5E7EB;
+    padding-top: 20px;
 }
 .skills-label {
     font-weight: 600;
@@ -122,28 +156,20 @@ header nav a:hover {
     margin-bottom: 10px;
     font-size: 0.9rem;
     font-weight: 500;
+    transition: background-color 0.3s;
 }
-
-/* 联系方式 */
-.contact-info p {
-    font-size: 1rem;
-    margin-bottom: 8px;
-    color: #4B5563;
-}
-.contact-info {
-    margin-top: 20px;
-    border-top: 1px solid #E5E7EB;
-    padding-top: 20px;
+.skill-tag:hover {
+    background-color: #0d9488;
 }
 
 .hero-right {
     display: flex;
-    justify-content: flex-end;
+    justify-content: flex-start;
     align-items: flex-start;
 }
 
 .hero-right img {
-    max-width: 100%;
+    width: 90%;
     aspect-ratio: 1 / 1; 
     object-fit: cover;
     border-radius: 12px;
@@ -153,9 +179,8 @@ header nav a:hover {
 /* ----------------- 优势与教育 (双栏 Grid 构图) ----------------- */
 .two-col-grid {
     display: grid;
-    grid-template-columns: 1.5fr 1fr; /* 左侧优势稍宽，右侧教育卡片 */
+    grid-template-columns: 1.5fr 1fr; 
     gap: var(--spacing-large);
-    padding-top: 0;
 }
 
 #advantages h2, #education h2 {
@@ -164,11 +189,7 @@ header nav a:hover {
     color: var(--text-dark);
 }
 
-#advantages ul {
-    list-style: none;
-    padding-left: 0;
-}
-#advantages li {
+#advantages ul li {
     background: var(--background-card);
     padding: 15px 20px;
     margin-bottom: 12px;
@@ -177,22 +198,27 @@ header nav a:hover {
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
     font-size: 1rem;
     color: #4B5563;
+    transition: transform 0.3s;
+}
+#advantages ul li:hover {
+    transform: translateX(5px);
 }
 .icon {
     margin-right: 8px;
     color: var(--accent-color);
     font-weight: bold;
 }
-
-/* 教育卡片 */
 .education-card {
-    border-left: none !important;
     border-top: 4px solid var(--primary-color);
     box-shadow: 0 4px 12px rgba(0,0,0,0.08) !important;
+    padding: 25px;
+    background: var(--background-card);
+    border-radius: 8px;
 }
 .education-card h3 {
     color: var(--primary-color);
     margin-bottom: 15px;
+    font-size: 1.5rem;
 }
 .education-card ul {
     padding-left: 20px;
@@ -204,7 +230,7 @@ header nav a:hover {
     margin-bottom: 5px;
 }
 
-/* ----------------- 工作经验 (时间线构图) ----------------- */
+/* ----------------- 工作经验 (时间线构图 & 动画) ----------------- */
 #experience h2 {
     font-size: 2.2rem;
     color: var(--text-dark);
@@ -212,9 +238,8 @@ header nav a:hover {
     text-align: center;
 }
 
-/* 时间线容器 */
 .timeline-container {
-    border-left: 3px solid #E5E7EB; /* 时间线主干 */
+    border-left: 3px solid #E5E7EB; 
     padding-left: 30px;
     position: relative;
 }
@@ -234,11 +259,10 @@ header nav a:hover {
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
 }
 
-/* 时间线标记点 */
 .timeline-item::before {
     content: '';
     position: absolute;
-    left: -37px; /* 调整到时间线主干上 */
+    left: -37px; 
     top: 30px;
     width: 15px;
     height: 15px;
@@ -265,125 +289,162 @@ header nav a:hover {
     font-weight: 500;
 }
 
-.job-content p {
+.job-content ul li {
+    list-style-type: '— '; 
+}
+
+/* ----------------- 作品集布局与导航 (Works) ----------------- */
+#works {
+    padding-bottom: var(--spacing-huge);
+}
+#works h2 {
+    text-align: center;
+    margin-bottom: var(--spacing-large);
+}
+
+.works-layout {
+    display: grid;
+    grid-template-columns: 250px 1fr; /* 左侧目录固定宽度，右侧内容自适应 */
+    gap: var(--spacing-medium);
+}
+
+/* 左侧目录 */
+.works-sidebar {
+    position: sticky;
+    top: 90px; /* 贴紧头部导航下方 */
+    height: fit-content;
+}
+
+#works-nav a {
+    display: block;
+    padding: 12px 15px;
+    margin-bottom: 8px;
+    background: var(--background-card);
+    color: var(--text-dark);
+    border-radius: 6px;
+    font-size: 1rem;
+    transition: background 0.3s, color 0.3s, border-left 0.3s;
+    border-left: 4px solid transparent;
+    font-weight: 500;
+}
+#works-nav a.active, #works-nav a:hover {
+    background: var(--background-card);
+    color: var(--primary-color);
+    border-left: 4px solid var(--primary-color);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+}
+
+/* 右侧作品内容 */
+.works-content {
+    background: var(--background-card);
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+}
+
+.category-heading {
+    color: var(--primary-color);
+    margin-bottom: 30px;
+    font-size: 1.8rem;
+    border-bottom: 2px solid #E5E7EB;
+    padding-bottom: 10px;
+}
+
+.work-items {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.work-item { 
+    background: var(--background-light);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s;
+}
+
+.work-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.work-item iframe { 
+    width: 100%; 
+    height: 200px; 
+    display: block; 
+    border: none;
+}
+
+.work-item p {
+    padding: 15px;
     font-weight: 600;
-    margin-top: 15px;
+    font-size: 1rem;
     color: var(--text-dark);
 }
 
-.job-content ul {
-    margin-top: 10px;
-    padding-left: 20px;
-}
-.job-content ul li {
-    font-size: 0.95rem;
-    margin-bottom: 5px;
-    color: #4B5563;
-    list-style-type: '— '; /* 使用破折号作为列表符号 */
+/* ----------------- 动画效果 ----------------- */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
-/* 突出成就数据 */
-.achievements {
-    margin-top: 20px !important;
-    border-top: 1px solid #F3F4F6;
-    padding-top: 15px !important;
+.fade-in {
+    animation: fadeIn 0.8s ease-out;
 }
 
-.highlight-data {
-    color: var(--accent-color);
-    font-weight: 700;
+.bounce-in {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeIn 0.5s ease-out forwards;
 }
 
-/* ----------------- 前端密码保护 (复用原有样式) ----------------- */
-#password-container { 
-    position:fixed; 
-    top:0; 
-    left:0; 
-    width:100%; 
-    height:100%; 
-    background:rgba(0,0,0,0.95); 
-    display:flex; 
-    justify-content:center; 
-    align-items:center; 
-    z-index:1000; 
-}
-
-#password-box { 
-    background:var(--background-card); 
-    padding:40px; 
-    border-radius:12px; 
-    text-align:center; 
-    box-shadow:0 10px 30px rgba(0,0,0,0.3);
-}
-
-#password-box h2 {
-    color: var(--primary-color);
-    margin-bottom: 15px;
-}
-
-#password-input { 
-    padding:12px 15px; 
-    border-radius:6px; 
-    border:1px solid #ccc; 
-    margin:15px 0; 
-    width:250px;
-    font-size: 1rem;
-}
-
-#password-submit-btn { 
-    padding:10px 25px; 
-    border:none; 
-    border-radius:6px; 
-    background:var(--primary-color); 
-    color:#fff; 
-    cursor:pointer; 
-    transition:0.3s; 
-    font-weight: 600;
-}
-
-#password-submit-btn:hover { 
-    background:var(--accent-color); 
-}
+.timeline-item:nth-child(1) { animation-delay: 0.1s; }
+.timeline-item:nth-child(2) { animation-delay: 0.2s; }
+.timeline-item:nth-child(3) { animation-delay: 0.3s; }
 
 /* ----------------- 响应式设计 (RWD) ----------------- */
-
 @media (max-width: 992px) {
-    /* 平板优化 */
+    /* 简介区垂直堆叠 */
     #profile {
-        grid-template-columns: 1fr; /* 垂直堆叠 */
+        grid-template-columns: 1fr;
         gap: var(--spacing-medium);
-        padding-top: 60px;
     }
-    .hero-left { order: 2; }
-    .hero-right { order: 1; margin: 0 auto 30px; }
+    .hero-left { order: 2; padding-top: 0; }
+    .hero-right { order: 1; margin: 0 auto 30px; justify-content: center; }
     .hero-right img { max-width: 300px; }
 
-    .hero-left h1 { font-size: 3.5rem; }
-    .hero-left h2 { font-size: 1.5rem; }
-
+    /* 优势与教育垂直堆叠 */
     .two-col-grid {
-        grid-template-columns: 1fr; /* 优势与教育垂直堆叠 */
-        gap: var(--spacing-medium);
+        grid-template-columns: 1fr;
+    }
+    
+    /* 作品集布局改为单栏 */
+    .works-layout {
+        grid-template-columns: 1fr;
+    }
+    .works-sidebar {
+        position: static;
+        top: 0;
+        height: auto;
+    }
+    #works-nav {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    #works-nav a {
+        margin: 5px 8px;
+        border-left: 4px solid transparent; /* 移除侧边栏样式 */
+        border-bottom: 4px solid transparent; 
+    }
+    #works-nav a.active, #works-nav a:hover {
+        border-left: 4px solid transparent;
+        border-bottom: 4px solid var(--primary-color); /* 变为底部高亮 */
     }
 }
-
 @media (max-width: 576px) {
-    /* 手机优化 */
-    .hero-left h1 {
-        font-size: 2.8rem;
-    }
-    .hero-left h2 {
-        font-size: 1.3rem;
-    }
-    
-    header nav {
-        display: none; 
-    }
-    
-    .timeline-container {
-        padding-left: 20px;
-    }
-    .timeline-item::before {
-        left: -27px;
-    }
+    .hero-left h1 { font-size: 2.8rem; }
+    .hero-left h2 { font-size: 1.3rem; }
+    header nav { display: none; }
 }

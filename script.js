@@ -2,87 +2,78 @@ document.addEventListener('DOMContentLoaded', () => {
     // ----------------------------------------------------
     // 1. 核心变量定义
     // ----------------------------------------------------
-    const CORRECT_PASSWORD = "1234"; // <-- **【重要】在这里设置您的密码！**
-    const storedAccess = localStorage.getItem('portfolioAccess'); 
+    const PASSWORD = "1234"; 
     
-    const passwordOverlay = document.getElementById('password-overlay');
+    const passwordContainer = document.getElementById('password-container');
     const siteContent = document.getElementById('site-content');
     const passwordInput = document.getElementById('password-input');
-    const passwordSubmit = document.getElementById('password-submit');
+    const passwordSubmitBtn = document.getElementById('password-submit-btn');
+    const passwordMessage = document.getElementById('password-message');
     
-    const filterButtons = document.querySelectorAll('.filter-btn');
+    // 作品集变量
+    const filterLinks = document.querySelectorAll('#works-nav a');
+    const worksContainer = document.querySelector('.works-content');
     const workItems = document.querySelectorAll('.work-item');
 
-
     // ----------------------------------------------------
-    // 2. 密码保护功能 (Password Protection)
+    // 2. 密码保护功能
     // ----------------------------------------------------
-    
-    // 初始化：检查本地存储，如果已授权，直接显示内容
-    if (storedAccess === 'granted') {
-        showSiteContent();
-    } else {
-        // 否则，显示密码覆盖层
-        passwordOverlay.style.display = 'flex'; 
-    }
-
-    // 绑定事件
-    passwordSubmit.addEventListener('click', handlePasswordSubmission);
-
-    // 回车键提交
+    passwordSubmitBtn.addEventListener('click', checkPassword);
     passwordInput.addEventListener('keypress', (e) => {
         if (e.key === 'Enter') {
-            handlePasswordSubmission();
+            checkPassword();
         }
     });
 
-    function handlePasswordSubmission() {
-        if (passwordInput.value === CORRECT_PASSWORD) {
-            // 密码正确：设置本地存储，下次访问时自动通过
-            localStorage.setItem('portfolioAccess', 'granted');
-            showSiteContent();
+    function checkPassword() {
+        const input = passwordInput.value;
+        if(input === PASSWORD) {
+            passwordContainer.style.display = 'none';
+            siteContent.style.display = 'block';
         } else {
-            alert('密码错误，请重试！');
-            passwordInput.value = ''; // 清空输入框
+            passwordMessage.innerText = "密码错误，请重试";
+            passwordInput.value = '';
         }
     }
-
-    function showSiteContent() {
-        passwordOverlay.style.display = 'none';
-        siteContent.style.display = 'block';
-    }
-
-
-    // ----------------------------------------------------
-    // 3. 作品集筛选功能 (Portfolio Filtering)
-    // ----------------------------------------------------
     
-    filterButtons.forEach(btn => {
-        btn.addEventListener('click', () => {
-            // 切换按钮激活状态
-            filterButtons.forEach(b => b.classList.remove('active'));
-            btn.classList.add('active');
+    // ----------------------------------------------------
+    // 3. 作品集分类筛选功能
+    // ----------------------------------------------------
+
+    filterLinks.forEach(link => {
+        link.addEventListener('click', (e) => {
+            e.preventDefault(); // 阻止默认的锚点跳转
+
+            // 1. 获取目标类别
+            const category = link.getAttribute('data-category');
             
-            const category = btn.dataset.category;
-            
-            // 筛选逻辑
+            // 2. 切换激活状态
+            filterLinks.forEach(l => l.classList.remove('active'));
+            link.classList.add('active');
+
+            // 3. 滚动到作品集区域 (更好的 UX)
+            document.getElementById('works').scrollIntoView({ behavior: 'smooth' });
+
+            // 4. 筛选逻辑
             workItems.forEach(item => {
-                if(category === 'all' || item.classList.contains(category)){
-                    item.style.display='block';
+                // 强制显示或隐藏作品
+                if (category === 'all' || item.classList.contains(category)) {
+                    item.style.display = 'block';
                 } else {
-                    item.style.display='none';
+                    item.style.display = 'none';
                 }
             });
+
+            // 5. 更新显示的分类标题 (可选，根据您的 HTML 结构)
+            const heading = worksContainer.querySelector('.category-heading');
+            if(heading) {
+                heading.innerText = link.innerText;
+            }
         });
     });
 
-    // 4. 页面初始加载：显示全部作品并激活“全部”按钮
-    // 确保默认显示全部作品
-    workItems.forEach(item => item.style.display='block');
-
-    // 确保“全部”按钮处于激活状态 (如果没有 active 按钮，则激活第一个)
-    const allButton = document.querySelector('.filter-btn[data-category="all"]');
-    if (allButton && !document.querySelector('.filter-btn.active')) {
-        allButton.classList.add('active');
-    }
+    // 初始加载时显示全部作品并激活第一个链接
+    const initialCategory = 'all';
+    document.querySelector(`.filter-btn[data-category="${initialCategory}"]`).classList.add('active');
+    workItems.forEach(item => item.style.display = 'block');
 });
