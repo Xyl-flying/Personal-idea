@@ -10,61 +10,64 @@
 
 <!-- 前端密码保护 -->
 <div id="password-overlay">
-  <div class="password-box">
-    <label for="password-input">请输入密码：</label>
-    <input type="password" id="password-input">
-    <button id="password-submit">提交</button>
-  </div>
+    <div class="password-box">
+        <h2>请输入访问密码</h2>
+        <input type="password" id="password-input" placeholder="密码">
+        <button id="password-submit">提交</button>
+    </div>
 </div>
 
-<!-- 主站内容 -->
+<!-- 网站内容 -->
 <div id="site-content" style="display:none;">
 
-<header>
-  <div class="logo"><a href="#">薛亚丽</a></div>
-  <nav>
-    <a href="#profile">简介</a>
-    <a href="#work">作品集</a>
-  </nav>
-</header>
+    <!-- Header -->
+    <header>
+        <div class="logo"><a href="#">关于我的一切</a></div>
+        <nav>
+            <a href="#profile">简介</a>
+            <a href="#work">作品集</a>
+        </nav>
+    </header>
 
-<section id="profile">
-  <div class="profile-left">
-    <h1>薛亚丽</h1>
-    <h2 class="highlight">AE / PS / UE / Unity / Maya / 3Dmax / Blender</h2>
-    <p>4年游戏买量行业经验，熟悉欧美及亚太市场，独立创意策划和视频设计能力。</p>
-    <p><span class="important">电话：</span>📞 +8613159539391</p>
-    <p><span class="important">邮箱：</span>✉️ Yali7531@163.com</p>
-  </div>
-  <div class="profile-right">
-    <img src="assets/images/01.jpg" alt="薛亚丽">
-  </div>
-</section>
+    <!-- 简介 -->
+    <section id="profile">
+        <div class="profile-left">
+            <h1>薛亚丽</h1>
+            <p>职业技能：AE, PS, 各主流AI软件, UE, Unity, Maya, 3DMax, Blender</p>
+            <p>个人优势：4年游戏买量经验，熟悉欧美及亚太市场，独立创意策划与视频设计能力...</p>
+        </div>
+        <div class="profile-right">
+            <img src="assets/images/01.jpg" alt="薛亚丽照片">
+        </div>
+    </section>
 
-<section id="work">
-  <h2>作品集</h2>
-  <div class="work-filters">
-    <button class="filter-btn active" data-category="all">全部</button>
-    <button class="filter-btn" data-category="videos">影像相关</button>
-    <button class="filter-btn" data-category="chapters">Chapters</button>
-    <button class="filter-btn" data-category="pv">PV</button>
-    <button class="filter-btn" data-category="slots">Slots</button>
-    <button class="filter-btn" data-category="composite">合成类</button>
-    <button class="filter-btn" data-category="mini">小游戏</button>
-  </div>
-
-  <div class="work-items">
-    <div class="work-item videos">
-      <video controls src="assets/videos/sample-video.mp4"></video>
-      <p>示例视频1</p>
-    </div>
-    <div class="work-item chapters">
-      <video controls src="assets/videos/sample-chapters.mp4"></video>
-      <p>示例Chapters</p>
-    </div>
-    <!-- 依次添加更多作品视频 -->
-  </div>
-</section>
+    <!-- 作品集 -->
+    <section id="work">
+        <h2>作品集</h2>
+        <div class="work-filters">
+            <button class="filter-btn active" data-category="all">全部</button>
+            <button class="filter-btn" data-category="影像相关">影像相关</button>
+            <button class="filter-btn" data-category="Chapters">Chapters</button>
+            <button class="filter-btn" data-category="PV">PV</button>
+            <button class="filter-btn" data-category="Slots">Slots</button>
+            <button class="filter-btn" data-category="合成类">合成类</button>
+            <button class="filter-btn" data-category="小游戏">小游戏</button>
+        </div>
+        <div class="work-items">
+            <div class="work-item 影像相关">
+                <video src="assets/videos/sample1.mp4" controls></video>
+                <p>影像相关示例</p>
+            </div>
+            <div class="work-item Chapters">
+                <video src="assets/videos/sample2.mp4" controls></video>
+                <p>Chapters 示例</p>
+            </div>
+            <div class="work-item PV">
+                <video src="assets/videos/sample3.mp4" controls></video>
+                <p>PV 示例</p>
+            </div>
+        </div>
+    </section>
 
 </div>
 
