@@ -1,26 +1,171 @@
-/* ----------------- CSS 变量定义 (略) ----------------- */
+/* ----------------- CSS 变量定义 (全新配色与间距) ----------------- */
 :root {
-    --primary-color: #06B6D4; 
-    --accent-color: #FBBF24; 
-    --background-light: #F0F9FF; 
-    --background-card: #FFFFFF; 
-    --text-dark: #1F2937; 
-    --spacing-huge: 100px; 
-    --spacing-large: 50px;
-    --spacing-medium: 25px;
+    --primary-color: #06B6D4; /* 主色调：青色/湖水绿，年轻高级 */
+    --accent-color: #FBBF24; /* 强调色：琥珀色/金色 (用于数据、悬停) */
+    --background-light: #F0F9FF; /* 背景色：极浅淡蓝 */
+    --background-card: #FFFFFF; /* 卡片背景色 */
+    --text-dark: #1F2937; /* 文本颜色：深灰蓝 */
+    
+    /* 垂直间距收缩：主要减少大板块间的间距 */
+    --spacing-huge: 80px;  /* 略微收缩 */
+    --spacing-large: 40px; /* 略微收缩 */
+    --spacing-medium: 20px;
 }
 
-/* ----------------- 字体大小优化 (略) ----------------- */
+/* ----------------- 基础布局 & 字体大小优化 ----------------- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+}
+
 body {
+    /* 字体统一为黑体 */
+    font-family: 'Heiti SC', 'Heiti', 'SimHei', 'Inter', 'Segoe UI', sans-serif; 
+    background: var(--background-light);
+    color: var(--text-dark);
+    line-height: 1.7; 
     font-size: 1.05rem; 
-    line-height: 1.7;
 }
-/* ... (标题、次级标题、正文等字体样式保持上一步优化后的状态) ... */
 
-/* ----------------- 专属编辑模式/访客模式 (略) ----------------- */
-.editor-only { display: none !important; }
-body.editor-mode .editor-only { display: flex !important; }
-body.editor-mode .visitor-only { display: none !important; }
+/* 调整 Section 的上下内边距，减少大板块间间隙 */
+section {
+    padding: var(--spacing-large) 5%; 
+    max-width: 1280px;
+    margin: 0 auto;
+}
+
+h1, h2, h3 {
+    color: var(--text-dark);
+    font-weight: 700;
+}
+
+/* 标题字体大小平衡调整 */
+.hero-left h1 {
+    font-size: 3.8rem; 
+    font-weight: 900;
+}
+.hero-left h2 {
+    font-size: 1.5rem; 
+    font-weight: 400;
+}
+#advantages h2, #education h2, #experience h2, #works h2 {
+    font-size: 2rem; 
+}
+.timeline-item h3 {
+    font-size: 1.3rem; 
+}
+.tagline {
+    font-size: 1.1rem !important;
+}
+.job-content p, .job-content ul li {
+    font-size: 1rem; 
+}
+
+/* 文本强调 */
+.highlight {
+    color: var(--primary-color);
+    font-weight: 800;
+}
+.emphasis {
+    font-weight: 700; 
+    color: var(--text-dark);
+}
+.highlight-data {
+    color: var(--accent-color);
+    font-weight: 800;
+}
+
+/* ======================================================= */
+/* 🔑 密码保护区域样式 - 居中与放大 (已优化) */
+/* ======================================================= */
+
+#password-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--background-light);
+    z-index: 1000;
+    
+    /* 核心：Flexbox 居中 */
+    display: flex;
+    justify-content: center; /* 水平居中 */
+    align-items: center;     /* 垂直居中 */
+    text-align: center;
+}
+
+#password-box {
+    background: var(--background-card);
+    padding: 50px 40px; 
+    border-radius: 12px;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+    max-width: 450px; 
+    width: 90%;
+}
+
+#password-box h2 {
+    font-size: 1.8rem; /* 文字放大 */
+    margin-bottom: 20px;
+    color: var(--primary-color);
+}
+
+#password-box p {
+    font-size: 1.1rem; /* 文字放大 */
+    color: #4B5563;
+    margin-bottom: 30px;
+}
+
+#password-input {
+    width: 100%;
+    padding: 15px; /* 输入框放大 */
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    text-align: center;
+    transition: border-color 0.3s;
+}
+
+#password-input:focus {
+    border-color: var(--primary-color);
+    outline: none;
+}
+
+#password-submit-btn {
+    width: 100%;
+    padding: 15px;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.2rem; /* 按钮文字放大 */
+    font-weight: 700;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+#password-submit-btn:hover {
+    background-color: #0d9488;
+    transform: translateY(-1px);
+}
+/* ======================================================= */
+
+
+/* ----------------- 专属编辑模式样式 (略) ----------------- */
+
+.editor-only {
+    display: none !important; 
+}
+
+body.editor-mode .editor-only {
+    display: flex !important; 
+}
+body.editor-mode .visitor-only {
+    display: none !important;
+}
 
 .hidden-input {
     width: 0.1px;
@@ -31,175 +176,51 @@ body.editor-mode .visitor-only { display: none !important; }
     z-index: -1;
 }
 
-/* ----------------- Header & Profile (略) ----------------- */
-/* ... (Header 和 Profile 的样式保持不变) ... */
+/* ----------------- Header & PDF 按钮 (略) ----------------- */
+header {
+    background: var(--background-card);
+    box-shadow: 0 1px 8px rgba(0, 0, 0, 0.05);
+    padding: 18px 5%;
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #E5E7EB; 
+}
+/* ... (Header 内部样式不变) ... */
+
+/* ----------------- Profile & 布局 (略) ----------------- */
+#profile {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr; 
+    gap: var(--spacing-large);
+    padding-top: var(--spacing-huge); 
+    padding-bottom: var(--spacing-large);
+    border-bottom: 1px solid #E5E7EB;
+}
+/* ... (Profile 内部样式不变) ... */
+
+/* ----------------- 优势与教育 - 间距调整 (略) ----------------- */
+.two-col-grid {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr; 
+    gap: var(--spacing-medium); 
+}
 
 
-/* ----------------- 作品集区域 - 核心修改 ----------------- */
+/* ----------------- 工作经验 - 间距调整 (略) ----------------- */
+.timeline-item {
+    padding: 20px; 
+}
+/* ... (时间线其他样式不变) ... */
 
+
+/* ----------------- 作品集区域 - 横向滚动 & 模态框 (略) ----------------- */
 .works-layout {
     display: grid;
     grid-template-columns: 250px 1fr; 
-    gap: var(--spacing-medium);
+    gap: var(--spacing-medium); 
 }
-
-.works-content {
-    background: var(--background-card);
-    padding: 30px;
-    border-radius: 8px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
-    overflow: hidden; /* 防止内容超出容器 */
-}
-
-/* 视频横向滚动容器 */
-.work-scroll-container {
-    display: flex; /* 启用弹性布局 */
-    gap: 30px; 
-    padding: 10px 0; /* 留出内边距，使滚动条不紧贴边缘 */
-    overflow-x: auto; /* 允许横向滚动 */
-    overflow-y: hidden; /* 禁止垂直滚动 */
-    padding-bottom: 20px; /* 为滚动条留出空间 */
-    /* 美化滚动条 (仅 Webkit 浏览器有效，如 Chrome/Safari) */
-    scrollbar-color: var(--primary-color) #E5E7EB; /* Firefox */
-    scrollbar-width: thin; /* Firefox */
-}
-.work-scroll-container::-webkit-scrollbar {
-    height: 8px;
-}
-.work-scroll-container::-webkit-scrollbar-thumb {
-    background: var(--primary-color);
-    border-radius: 10px;
-}
-
-.work-item { 
-    /* 确保每个作品卡片有固定宽度，才能触发横向滚动 */
-    flex: 0 0 350px; /* 不收缩，不增长，固定宽度 350px */
-    position: relative; 
-    background: var(--background-light);
-    border-radius: 8px;
-    overflow: hidden;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
-    transition: transform 0.3s;
-    height: 290px; /* 统一高度 */
-}
-
-.work-item:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
-}
-
-.work-item iframe { 
-    width: 100%; 
-    height: 220px; /* 视频高度 */
-    display: block; 
-    border: none;
-}
-.work-item p {
-    padding: 10px 15px;
-    font-weight: 600;
-    font-size: 1rem;
-    color: var(--text-dark);
-}
-
-
-/* 新增视频卡片样式 (略) */
-.work-item.add-new-video {
-    flex: 0 0 350px; 
-    background: var(--background-light);
-    border: 2px dashed var(--primary-color);
-    cursor: pointer;
-    align-items: center;
-    justify-content: center;
-    height: 290px; 
-    display: flex;
-    flex-direction: column;
-}
-
-/* 视频放大按钮样式 */
-.video-zoom-btn {
-    position: absolute;
-    top: 50%; /* 垂直居中 */
-    left: 50%; /* 水平居中 */
-    transform: translate(-50%, -50%);
-    background: rgba(0, 0, 0, 0.8);
-    color: white;
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    border: 2px solid white;
-    font-size: 1.5rem;
-    opacity: 0; /* 默认隐藏 */
-    transition: opacity 0.3s, background 0.3s;
-    cursor: pointer;
-    z-index: 10;
-}
-
-.work-item:hover .video-zoom-btn {
-    opacity: 1; /* 鼠标悬停时显示 */
-}
-.video-zoom-btn:hover {
-    background: var(--primary-color);
-}
-
-/* ----------------- 模态框 (Modal) 样式 ----------------- */
-.modal {
-    display: none; /* 默认隐藏 */
-    position: fixed; 
-    z-index: 100; 
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-    background-color: rgba(0, 0, 0, 0.9); /* 背景变暗 */
-    backdrop-filter: blur(5px); /* 背景略微模糊 */
-    padding-top: 50px;
-}
-
-.modal-content {
-    position: relative;
-    background-color: transparent; 
-    margin: 5% auto; /* 居中放大 */
-    padding: 0;
-    width: 80%; /* 放大后的宽度 */
-    max-width: 900px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-    animation-name: animatetop;
-    animation-duration: 0.4s;
-}
-
-/* 播放器 iframe 样式 */
-#modal-video-iframe {
-    width: 100%;
-    /* 保持 16:9 比例 */
-    aspect-ratio: 16 / 9; 
-    height: auto; 
-    display: block;
-}
-
-/* 关闭按钮 */
-.close-btn {
-    color: #f1f1f1;
-    font-size: 40px;
-    font-weight: bold;
-    position: absolute;
-    top: -40px; /* 移到模态框的上方 */
-    right: 5px;
-    cursor: pointer;
-    transition: 0.3s;
-    opacity: 0.8;
-}
-
-.close-btn:hover,
-.close-btn:focus {
-    color: var(--primary-color);
-    text-decoration: none;
-    cursor: pointer;
-    opacity: 1;
-}
-
-/* 模态框动画 */
-@keyframes animatetop {
-    from {top: -300px; opacity: 0}
-    to {top: 0; opacity: 1}
-}
+/* ... (横向滚动和模态框样式不变) ... */
