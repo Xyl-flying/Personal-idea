@@ -22,6 +22,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const videoFileInput = document.getElementById('video-file-input');
     const editVideoBtns = document.querySelectorAll('.edit-video-btn');
 
+    // 简历 PDF 变量
+    const replacePdfBtn = document.getElementById('replace-pdf-btn');
+    const pdfFileInput = document.getElementById('pdf-file-input');
+    const resumeDownloadLink = document.getElementById('resume-download-link');
+
     // ----------------------------------------------------
     // 2. 密码保护功能 (模式切换)
     // ----------------------------------------------------
@@ -46,14 +51,35 @@ document.addEventListener('DOMContentLoaded', () => {
             passwordContainer.style.display = 'none';
             siteContent.style.display = 'block';
             document.body.classList.remove('editor-mode'); 
-            passwordMessage.innerText = "密码错误，请重试";
-            passwordInput.value = '';
+            // 访客模式下，确保编辑按钮被隐藏，下载链接显示
+            if (resumeDownloadLink) resumeDownloadLink.style.display = 'inline-block';
+            if (replacePdfBtn) replacePdfBtn.style.display = 'none';
         }
     }
 
     // ----------------------------------------------------
-    // 3. 文件上传触发及占位符处理 (仅在编辑模式下生效)
+    // 3. 文件上传触发及处理逻辑 (新增 PDF 逻辑)
     // ----------------------------------------------------
+    
+    // 简历 PDF 替换触发
+    if(replacePdfBtn) {
+        replacePdfBtn.addEventListener('click', () => {
+            pdfFileInput.click();
+        });
+    }
+
+    // 监听 PDF 文件选择变化
+    pdfFileInput.addEventListener('change', (e) => {
+        const file = e.target.files[0];
+        if (file) {
+            // TODO: 这里需要调用后端 API 上传 PDF 文件
+            // **重要：** 上传成功后，后端应返回新的文件路径，并更新 resumeDownloadLink 的 href 属性
+            alert(`已选择 PDF 文件：${file.name}。请联系后端工程师完成上传和路径更新。`);
+
+            // 概念性更新：假设上传成功后文件路径为 /assets/downloads/new_resume.pdf
+            // resumeDownloadLink.href = "/assets/downloads/new_resume.pdf";
+        }
+    });
     
     // 个人照片上传触发
     if(photoUploadBtn) {
@@ -69,42 +95,29 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // 替换现有视频触发 (概念性，您需要自行绑定到具体作品ID)
-    editVideoBtns.forEach(btn => {
-        btn.addEventListener('click', () => {
-            // 记录要替换的作品ID
-            const workId = btn.closest('.work-item').getAttribute('data-work-id');
-            // 触发文件输入，理论上应为新的文件输入或复用已有的
-            alert(`正在替换作品 ID: ${workId}。下一步应触发文件选择并处理后端上传。`);
-        });
-    });
-
-    // 监听照片文件选择变化
+    // 监听照片文件选择变化 (略)
     photoFileInput.addEventListener('change', (e) => {
         const file = e.target.files[0];
         if (file) {
-            // 概念性地更新前端显示
             const reader = new FileReader();
             reader.onload = (e) => {
                 document.getElementById('profile-photo').src = e.target.result;
             };
             reader.readAsDataURL(file);
-            // TODO: 在此处调用您的后端 API 上传文件并更新数据库路径
             alert(`照片已在前端预览更新。请联系后端工程师完成持久化存储。`);
         }
     });
 
-    // 监听视频文件选择变化
+    // 监听视频文件选择变化 (略)
     videoFileInput.addEventListener('change', (e) => {
         const file = e.target.files[0];
         if (file) {
-            // TODO: 在此处调用您的后端 API 上传文件，并在数据库中创建新的作品记录
             alert(`已选择视频文件：${file.name}。请联系后端工程师完成持久化存储及作品创建。`);
         }
     });
 
     // ----------------------------------------------------
-    // 4. 作品集分类筛选功能
+    // 4. 作品集分类筛选功能 (略)
     // ----------------------------------------------------
     
     filterLinks.forEach(link => {

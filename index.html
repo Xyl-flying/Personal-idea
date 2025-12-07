@@ -23,44 +23,52 @@
 <div id="site-content" style="display:none;">
 
     <header class="container">
-    <div class="logo"><a href="#profile">关于我的一切</a></div>
+    <div class="logo">薛亚丽</div>
     <nav>
-      <a href="#profile">简介</a>
-      <a href="#experience">工作经历</a>
-      <a href="#works">作品集</a>
+      <a href="#profile">Profile</a>
+      <a href="#experience">Works</a>
+      <a href="#advantages-education">About</a>
+      <a href="#profile" class="contact-nav-link">Contact</a>
+      
+      <a href="assets/downloads/resume.pdf" download id="resume-download-link" class="download-btn visitor-only">简历下载</a>
+      
+      <button id="replace-pdf-btn" class="upload-control editor-only">
+          <i class="fas fa-file-upload"></i> 替换 $PDF$
+      </button>
+      <input type="file" id="pdf-file-input" accept="application/pdf" class="hidden-input editor-only">
     </nav>
   </header>
 
     <section id="profile" class="hero container">
-    <div class="hero-left fade-in">
-      <h1>薛亚丽</h1>
-      <h2>视频创意设计师 / <span class="highlight">游戏买量素材专家</span></h2>
-      <p class="tagline">专注海外市场视频广告创意策划与制作</p>
-      
-            <div class="contact-info">
-        <p><i class="fas fa-phone-alt"></i> 电话: <span>+8613159539391</span></p>
-        <p><i class="fas fa-envelope"></i> 邮箱: <span>Yali7531@163.com</span></p>
-      </div>
-
-      <div class="skills-bar">
-          <p class="skills-label">核心技能:</p>
-          <span class="skill-tag">AE/PS/AI</span>
-          <span class="skill-tag">UE/Unity/Maya</span>
-          <span class="skill-tag">AIGC Tools</span>
-          <span class="skill-tag">Data-Driven Creative</span>
-      </div>
-    </div>
-
-        <div class="hero-right fade-in">
+        <div class="hero-right fade-in">
       <img id="profile-photo" src="assets/images/01.jpg" alt="薛亚丽照片">
       <button id="photo-upload-btn" class="upload-control editor-only">
           <i class="fas fa-camera"></i> 替换照片
       </button>
       <input type="file" id="photo-file-input" accept="image/*" class="hidden-input editor-only">
     </div>
-  </section>
 
-    <section id="advantages-education" class="container">
+        <div class="hero-left fade-in">
+      <h1>薛亚丽</h1>
+      <h2>视频创意设计师 / <span class="highlight">游戏买量素材专家</span></h2>
+      <p class="tagline">专注海外市场视频广告创意策划与制作</p>
+
+      <div class="contact-info">
+        <p><i class="fas fa-envelope"></i> Email: <span>Yali7531@163.com</span></p>
+        <p><i class="fas fa-map-marker-alt"></i> Location: <span>Asia / Shenzhen</span></p>
+      </div>
+      
+      <div class="skills-bar">
+          <p class="skills-label">Skills:</p>
+          <span class="skill-tag">AIGC Creativity</span>
+          <span class="skill-tag">Video Production</span>
+          <span class="skill-tag">Data-Driven Ad Creatives</span>
+      </div>
+      
+    </div>
+  </section>
+  
+      <section id="advantages-education" class="container">
     <div class="two-col-grid">
         <div id="advantages">
             <h2>个人优势</h2>
