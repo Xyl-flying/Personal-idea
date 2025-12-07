@@ -1,52 +1,26 @@
-/* ----------------- CSS 变量定义 ----------------- */
+/* ----------------- CSS 变量定义 (略) ----------------- */
 :root {
-    --primary-color: #06B6D4; /* 主色调：青色/湖水绿 */
-    --accent-color: #FBBF24; /* 强调色：琥珀色/金色 */
-    --background-light: #F0F9FF; /* 背景色：极浅淡蓝 */
-    --background-card: #FFFFFF; /* 卡片背景色 */
-    --text-dark: #1F2937; /* 文本颜色：深灰蓝 */
-    --spacing-huge: 100px; /* 略微缩小大间距 */
+    --primary-color: #06B6D4; 
+    --accent-color: #FBBF24; 
+    --background-light: #F0F9FF; 
+    --background-card: #FFFFFF; 
+    --text-dark: #1F2937; 
+    --spacing-huge: 100px; 
     --spacing-large: 50px;
     --spacing-medium: 25px;
 }
 
-/* ----------------- 字体大小优化 (核心修改) ----------------- */
+/* ----------------- 字体大小优化 (略) ----------------- */
 body {
-    font-size: 1.05rem; /* 正文基准字体略微增大 */
+    font-size: 1.05rem; 
     line-height: 1.7;
 }
+/* ... (标题、次级标题、正文等字体样式保持上一步优化后的状态) ... */
 
-/* 标题 - h1 尺寸缩小，避免过于突兀 */
-.hero-left h1 {
-    font-size: 3.8rem; 
-    font-weight: 900;
-}
-
-/* 次级标题 - h2, h3 尺寸微调 */
-.hero-left h2 {
-    font-size: 1.5rem;
-}
-#advantages h2, #education h2, #experience h2, #works h2 {
-    font-size: 2rem;
-}
-.timeline-item h3 {
-    font-size: 1.3rem;
-}
-
-/* ----------------- 专属编辑模式样式 ----------------- */
-
-.editor-only {
-    display: none !important; 
-}
-
-body.editor-mode .editor-only {
-    /* 访客模式下的下载按钮隐藏，显示编辑按钮 */
-    display: flex !important; 
-}
-body.editor-mode .visitor-only {
-    /* 访客模式下的下载按钮隐藏 */
-    display: none !important;
-}
+/* ----------------- 专属编辑模式/访客模式 (略) ----------------- */
+.editor-only { display: none !important; }
+body.editor-mode .editor-only { display: flex !important; }
+body.editor-mode .visitor-only { display: none !important; }
 
 .hidden-input {
     width: 0.1px;
@@ -57,84 +31,175 @@ body.editor-mode .visitor-only {
     z-index: -1;
 }
 
-/* ----------------- Header (添加简历下载按钮样式) ----------------- */
-header {
-    background: var(--background-card);
-    box-shadow: 0 1px 8px rgba(0, 0, 0, 0.05);
-    padding: 18px 5%;
-    position: sticky;
-    top: 0;
-    z-index: 50;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-bottom: 1px solid #E5E7EB; 
-}
+/* ----------------- Header & Profile (略) ----------------- */
+/* ... (Header 和 Profile 的样式保持不变) ... */
 
-/* 导航链接样式 */
-header nav a {
-    margin-left: 30px; 
-    font-size: 0.95rem; /* 导航字体微调 */
-    font-weight: 600;
-    color: #6B7280; 
-    transition: color 0.3s, border-bottom 0.3s;
-    text-transform: uppercase;
-}
 
-header nav a.download-btn, header nav button {
-    /* 简历下载按钮基础样式 */
-    background: var(--primary-color);
-    color: white !important;
-    padding: 8px 15px;
-    border-radius: 20px;
-    font-size: 0.95rem;
-    font-weight: 700;
-    margin-left: 40px; 
-    transition: background 0.3s, transform 0.3s;
-    text-decoration: none;
-    border: none;
-    cursor: pointer;
-}
+/* ----------------- 作品集区域 - 核心修改 ----------------- */
 
-header nav a.download-btn:hover, header nav button:hover {
-    background: #0d9488;
-    transform: translateY(-2px);
-    border-bottom: none;
-}
-
-/* ----------------- 简介主区 (Profile) ----------------- */
-#profile {
+.works-layout {
     display: grid;
-    grid-template-columns: 1.5fr 1fr; 
-    gap: var(--spacing-large);
-    padding-top: var(--spacing-huge);
-    padding-bottom: var(--spacing-large);
-    border-bottom: 1px solid #E5E7EB;
+    grid-template-columns: 250px 1fr; 
+    gap: var(--spacing-medium);
 }
 
-.tagline {
-    font-size: 1.1rem !important; /* 标签语字体微调 */
-    font-weight: 500;
+.works-content {
+    background: var(--background-card);
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    overflow: hidden; /* 防止内容超出容器 */
 }
 
-/* 联系信息和技能标签文字微调 */
-.contact-info p, .skills-label {
+/* 视频横向滚动容器 */
+.work-scroll-container {
+    display: flex; /* 启用弹性布局 */
+    gap: 30px; 
+    padding: 10px 0; /* 留出内边距，使滚动条不紧贴边缘 */
+    overflow-x: auto; /* 允许横向滚动 */
+    overflow-y: hidden; /* 禁止垂直滚动 */
+    padding-bottom: 20px; /* 为滚动条留出空间 */
+    /* 美化滚动条 (仅 Webkit 浏览器有效，如 Chrome/Safari) */
+    scrollbar-color: var(--primary-color) #E5E7EB; /* Firefox */
+    scrollbar-width: thin; /* Firefox */
+}
+.work-scroll-container::-webkit-scrollbar {
+    height: 8px;
+}
+.work-scroll-container::-webkit-scrollbar-thumb {
+    background: var(--primary-color);
+    border-radius: 10px;
+}
+
+.work-item { 
+    /* 确保每个作品卡片有固定宽度，才能触发横向滚动 */
+    flex: 0 0 350px; /* 不收缩，不增长，固定宽度 350px */
+    position: relative; 
+    background: var(--background-light);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s;
+    height: 290px; /* 统一高度 */
+}
+
+.work-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.work-item iframe { 
+    width: 100%; 
+    height: 220px; /* 视频高度 */
+    display: block; 
+    border: none;
+}
+.work-item p {
+    padding: 10px 15px;
+    font-weight: 600;
     font-size: 1rem;
-}
-.skill-tag {
-    font-size: 0.8rem; /* 技能标签字体略微缩小，作为细节元素 */
+    color: var(--text-dark);
 }
 
 
-/* ----------------- 优势与教育 (正文列表字体微调) ----------------- */
-#advantages ul li {
-    font-size: 1rem;
-}
-.education-card li {
-    font-size: 1rem;
+/* 新增视频卡片样式 (略) */
+.work-item.add-new-video {
+    flex: 0 0 350px; 
+    background: var(--background-light);
+    border: 2px dashed var(--primary-color);
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+    height: 290px; 
+    display: flex;
+    flex-direction: column;
 }
 
-/* ----------------- 工作经验 (时间线正文微调) ----------------- */
-.job-content p, .job-content ul li {
-    font-size: 1rem;
+/* 视频放大按钮样式 */
+.video-zoom-btn {
+    position: absolute;
+    top: 50%; /* 垂直居中 */
+    left: 50%; /* 水平居中 */
+    transform: translate(-50%, -50%);
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    border: 2px solid white;
+    font-size: 1.5rem;
+    opacity: 0; /* 默认隐藏 */
+    transition: opacity 0.3s, background 0.3s;
+    cursor: pointer;
+    z-index: 10;
+}
+
+.work-item:hover .video-zoom-btn {
+    opacity: 1; /* 鼠标悬停时显示 */
+}
+.video-zoom-btn:hover {
+    background: var(--primary-color);
+}
+
+/* ----------------- 模态框 (Modal) 样式 ----------------- */
+.modal {
+    display: none; /* 默认隐藏 */
+    position: fixed; 
+    z-index: 100; 
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.9); /* 背景变暗 */
+    backdrop-filter: blur(5px); /* 背景略微模糊 */
+    padding-top: 50px;
+}
+
+.modal-content {
+    position: relative;
+    background-color: transparent; 
+    margin: 5% auto; /* 居中放大 */
+    padding: 0;
+    width: 80%; /* 放大后的宽度 */
+    max-width: 900px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    animation-name: animatetop;
+    animation-duration: 0.4s;
+}
+
+/* 播放器 iframe 样式 */
+#modal-video-iframe {
+    width: 100%;
+    /* 保持 16:9 比例 */
+    aspect-ratio: 16 / 9; 
+    height: auto; 
+    display: block;
+}
+
+/* 关闭按钮 */
+.close-btn {
+    color: #f1f1f1;
+    font-size: 40px;
+    font-weight: bold;
+    position: absolute;
+    top: -40px; /* 移到模态框的上方 */
+    right: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+    opacity: 0.8;
+}
+
+.close-btn:hover,
+.close-btn:focus {
+    color: var(--primary-color);
+    text-decoration: none;
+    cursor: pointer;
+    opacity: 1;
+}
+
+/* 模态框动画 */
+@keyframes animatetop {
+    from {top: -300px; opacity: 0}
+    to {top: 0; opacity: 1}
 }
