@@ -51,8 +51,12 @@
       </div>
     </div>
 
-    <div class="hero-right fade-in">
-      <img src="assets/images/01.jpg" alt="薛亚丽照片">
+        <div class="hero-right fade-in">
+      <img id="profile-photo" src="assets/images/01.jpg" alt="薛亚丽照片">
+      <button id="photo-upload-btn" class="upload-control editor-only">
+          <i class="fas fa-camera"></i> 替换照片
+      </button>
+      <input type="file" id="photo-file-input" accept="image/*" class="hidden-input editor-only">
     </div>
   </section>
 
@@ -174,23 +178,34 @@
         <div class="works-content">
             <div class="work-items" id="category-all">
                 <h3 class="category-heading">全部作品</h3>
-                <div class="work-item YingXiang bounce-in-item">
+                
+                <div class="work-item add-new-video editor-only">
+                    <div class="add-placeholder">
+                        <i class="fas fa-plus-circle"></i>
+                        <p>点击新增作品</p>
+                    </div>
+                    <input type="file" id="video-file-input" accept="video/*" class="hidden-input editor-only">
+                </div>
+
+                <div class="work-item YingXiang bounce-in-item" data-work-id="1">
                     <iframe src="https://www.youtube.com/embed/YOUR_YOUTUBE_ID_1" frameborder="0" allowfullscreen></iframe>
                     <p>影像相关示例 - 标题 A</p>
+                    <button class="edit-video-btn editor-only"><i class="fas fa-edit"></i> 替换</button>
                 </div>
-                <div class="work-item Chapters bounce-in-item">
+                <div class="work-item Chapters bounce-in-item" data-work-id="2">
                     <iframe src="https://www.youtube.com/embed/YOUR_YOUTUBE_ID_2" frameborder="0" allowfullscreen></iframe>
                     <p>Chapters 示例 - 标题 B</p>
+                    <button class="edit-video-btn editor-only"><i class="fas fa-edit"></i> 替换</button>
                 </div>
-                <div class="work-item PV bounce-in-item">
+                <div class="work-item PV bounce-in-item" data-work-id="3">
                     <iframe src="https://www.youtube.com/embed/YOUR_YOUTUBE_ID_3" frameborder="0" allowfullscreen></iframe>
                     <p>PV 示例 - 标题 C</p>
+                    <button class="edit-video-btn editor-only"><i class="fas fa-edit"></i> 替换</button>
                 </div>
-                </div>
+            </div>
         </div>
     </div>
   </section>
-
 </div>
 
 <script src="script.js"></script>

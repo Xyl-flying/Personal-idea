@@ -1,6 +1,6 @@
 /* ----------------- CSS 变量定义 (全新配色与间距) ----------------- */
 :root {
-    --primary-color: #06B6D4; /* 主色调：青色/湖水绿 */
+    --primary-color: #06B6D4; /* 主色调：青色/湖水绿，年轻高级 */
     --accent-color: #FBBF24; /* 强调色：琥珀色/金色 (用于数据、悬停) */
     --background-light: #F0F9FF; /* 背景色：极浅淡蓝 */
     --background-card: #FFFFFF; /* 卡片背景色 */
@@ -49,6 +49,26 @@ h1, h2, h3 {
     font-weight: 800;
 }
 
+/* ----------------- 专属编辑模式样式 (核心权限控制) ----------------- */
+
+.editor-only {
+    display: none !important; /* 默认隐藏所有编辑控件 */
+}
+
+body.editor-mode .editor-only {
+    display: flex !important; /* 仅在 body 有 .editor-mode 类时显示 */
+}
+
+.hidden-input {
+    /* 隐藏原生的文件选择框 */
+    width: 0.1px;
+    height: 0.1px;
+    opacity: 0;
+    overflow: hidden;
+    position: absolute;
+    z-index: -1;
+}
+
 /* ----------------- Header ----------------- */
 header {
     background: var(--background-card);
@@ -81,18 +101,17 @@ header nav a:hover {
     transform: translateY(-2px);
 }
 
-/* ----------------- 简介主区 (Profile) - 构图对齐 ----------------- */
+/* ----------------- 简介主区 (Profile) ----------------- */
 #profile {
     display: grid;
-    /* 1:1.2 非对称构图 */
-    grid-template-columns: 1.2fr 1fr; 
+    grid-template-columns: 1.2fr 1fr; /* 1.2:1 构图 */
     gap: var(--spacing-large);
     padding-top: var(--spacing-huge);
     padding-bottom: var(--spacing-large);
 }
 
 .hero-left {
-    padding-top: 50px; /* 向上对齐照片顶部 */
+    padding-top: 50px; 
 }
 
 .hero-left h1 {
@@ -117,15 +136,10 @@ header nav a:hover {
 }
 
 /* 联系信息 - 图标样式 */
-.contact-info p {
-    font-size: 1rem;
-    margin-bottom: 8px;
-    color: #4B5563;
-}
 .contact-info i {
     color: var(--primary-color);
     margin-right: 10px;
-    width: 18px; /* 保持图标宽度统一 */
+    width: 18px; 
     text-align: center;
 }
 .contact-info {
@@ -163,6 +177,7 @@ header nav a:hover {
 }
 
 .hero-right {
+    position: relative; /* 确保上传按钮相对于图片定位 */
     display: flex;
     justify-content: flex-start;
     align-items: flex-start;
@@ -176,7 +191,27 @@ header nav a:hover {
     box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
 }
 
-/* ----------------- 优势与教育 (双栏 Grid 构图) ----------------- */
+/* 照片替换按钮 - 固定版位 */
+.upload-control {
+    position: absolute;
+    bottom: 5%;
+    left: 45%;
+    transform: translateX(-50%);
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 8px 15px;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: background 0.3s;
+    z-index: 20; 
+}
+.upload-control:hover {
+    background-color: var(--primary-color);
+}
+
+/* ----------------- 优势与教育 ----------------- */
 .two-col-grid {
     display: grid;
     grid-template-columns: 1.5fr 1fr; 
@@ -196,8 +231,6 @@ header nav a:hover {
     border-left: 4px solid var(--primary-color);
     border-radius: 6px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-    font-size: 1rem;
-    color: #4B5563;
     transition: transform 0.3s;
 }
 #advantages ul li:hover {
@@ -208,29 +241,8 @@ header nav a:hover {
     color: var(--accent-color);
     font-weight: bold;
 }
-.education-card {
-    border-top: 4px solid var(--primary-color);
-    box-shadow: 0 4px 12px rgba(0,0,0,0.08) !important;
-    padding: 25px;
-    background: var(--background-card);
-    border-radius: 8px;
-}
-.education-card h3 {
-    color: var(--primary-color);
-    margin-bottom: 15px;
-    font-size: 1.5rem;
-}
-.education-card ul {
-    padding-left: 20px;
-}
-.education-card li {
-    list-style: disc;
-    font-size: 0.95rem;
-    color: #4B5563;
-    margin-bottom: 5px;
-}
 
-/* ----------------- 工作经验 (时间线构图 & 动画) ----------------- */
+/* ----------------- 工作经验 (时间线构图) ----------------- */
 #experience h2 {
     font-size: 2.2rem;
     color: var(--text-dark);
@@ -294,9 +306,6 @@ header nav a:hover {
 }
 
 /* ----------------- 作品集布局与导航 (Works) ----------------- */
-#works {
-    padding-bottom: var(--spacing-huge);
-}
 #works h2 {
     text-align: center;
     margin-bottom: var(--spacing-large);
@@ -311,7 +320,7 @@ header nav a:hover {
 /* 左侧目录 */
 .works-sidebar {
     position: sticky;
-    top: 90px; /* 贴紧头部导航下方 */
+    top: 90px; 
     height: fit-content;
 }
 
@@ -357,6 +366,7 @@ header nav a:hover {
 }
 
 .work-item { 
+    position: relative; /* 用于编辑按钮定位 */
     background: var(--background-light);
     border-radius: 8px;
     overflow: hidden;
@@ -383,6 +393,44 @@ header nav a:hover {
     color: var(--text-dark);
 }
 
+/* 新增视频卡片样式 - 固定版位 */
+.work-item.add-new-video {
+    background: var(--background-light);
+    border: 2px dashed var(--primary-color);
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+    height: 250px; 
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+.add-placeholder i {
+    font-size: 3rem;
+    color: var(--primary-color);
+    margin-bottom: 10px;
+}
+.work-item.add-new-video:hover {
+    background: #E0F7FA;
+    transform: none; 
+    box-shadow: none;
+}
+
+/* 现有视频替换按钮 */
+.edit-video-btn {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    background: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.8rem;
+}
+
+
 /* ----------------- 动画效果 ----------------- */
 @keyframes fadeIn {
     from { opacity: 0; transform: translateY(20px); }
@@ -404,6 +452,7 @@ header nav a:hover {
 .timeline-item:nth-child(3) { animation-delay: 0.3s; }
 
 /* ----------------- 响应式设计 (RWD) ----------------- */
+
 @media (max-width: 992px) {
     /* 简介区垂直堆叠 */
     #profile {
@@ -435,12 +484,12 @@ header nav a:hover {
     }
     #works-nav a {
         margin: 5px 8px;
-        border-left: 4px solid transparent; /* 移除侧边栏样式 */
+        border-left: 4px solid transparent; 
         border-bottom: 4px solid transparent; 
     }
     #works-nav a.active, #works-nav a:hover {
         border-left: 4px solid transparent;
-        border-bottom: 4px solid var(--primary-color); /* 变为底部高亮 */
+        border-bottom: 4px solid var(--primary-color); 
     }
 }
 @media (max-width: 576px) {
