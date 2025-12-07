@@ -3,69 +3,106 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>薛亚丽 作品集</title>
+<title>薛亚丽 | 创意设计师作品集</title>
 <link rel="stylesheet" href="style.css">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&display=swap" rel="stylesheet">
 </head>
 <body>
 
-<!-- 前端密码保护 -->
 <div id="password-overlay">
     <div class="password-box">
         <h2>请输入访问密码</h2>
+        <p>此作品集仅对特定人士开放。</p>
         <input type="password" id="password-input" placeholder="密码">
-        <button id="password-submit">提交</button>
+        <button id="password-submit">进入作品集</button>
     </div>
 </div>
 
-<!-- 网站内容 -->
 <div id="site-content" style="display:none;">
 
-    <!-- Header -->
     <header>
-        <div class="logo"><a href="#">关于我的一切</a></div>
-        <nav>
-            <a href="#profile">简介</a>
-            <a href="#work">作品集</a>
-        </nav>
+        <div class="nav-content container">
+            <div class="logo"><a href="#">薛亚丽 | 创意设计</a></div>
+            <nav>
+                <a href="#profile">简介/简历</a>
+                <a href="#work">作品集</a>
+            </nav>
+        </div>
     </header>
 
-    <!-- 简介 -->
-    <section id="profile">
+    <section id="profile" class="container">
         <div class="profile-left">
             <h1>薛亚丽</h1>
-            <p>职业技能：AE, PS, 各主流AI软件, UE, Unity, Maya, 3DMax, Blender</p>
-            <p>个人优势：4年游戏买量经验，熟悉欧美及亚太市场，独立创意策划与视频设计能力...</p>
+            <p class="summary">
+                一位专注于**游戏买量视频**与**创意策划**的资深设计师。拥有 <span class="highlight">4年游戏买量经验</span>，熟悉欧美及亚太市场，具备独立的创意策划与视频设计能力。精通各类主流软件与前沿技术。
+            </p>
+
+            <div class="job-container">
+                <h2>核心技能</h2>
+                <div class="job skills">
+                    <ul>
+                        <li><span class="highlight">平面/动效：</span>AE, PS, AI, Spine</li>
+                        <li><span class="highlight">3D/引擎：</span>UE, Unity, Maya, 3DMax, Blender, C4D</li>
+                        <li><span class="highlight">创意策划：</span>独立完成从概念到成品的全流程，深度理解买量逻辑。</li>
+                    </ul>
+                </div>
+
+                <h2>工作经历</h2>
+                <div class="job">
+                    <h3>创意总监 | 某知名游戏公司 (2022 - 至今)</h3>
+                    <ul>
+                        <li>主导欧美市场所有买量素材创意，ROI提升<span class="important">15%</span>。</li>
+                        <li>培养并指导创意团队，建立了高效的素材产出流程。</li>
+                    </ul>
+                </div>
+                <div class="job">
+                    <h3>资深设计师 | 某头部互联网公司 (2018 - 2022)</h3>
+                    <ul>
+                        <li>负责 Chapters、Slots 等核心项目的视频制作与合成。</li>
+                        <li>独立完成多款小游戏推广视频，累计曝光量超过 1 亿。</li>
+                    </ul>
+                </div>
+            </div>
         </div>
+
         <div class="profile-right">
-            <img src="assets/images/01.jpg" alt="薛亚丽照片">
+            <img src="assets/images/01.jpg" alt="薛亚丽专业照片">
         </div>
     </section>
 
-    <!-- 作品集 -->
-    <section id="work">
-        <h2>作品集</h2>
+    <section id="work" class="container">
+        <h2>精选作品集</h2>
+        
         <div class="work-filters">
-            <button class="filter-btn active" data-category="all">全部</button>
-            <button class="filter-btn" data-category="影像相关">影像相关</button>
+            <button class="filter-btn" data-category="all">全部作品</button>
+            <button class="filter-btn" data-category="YingXiang">影像相关</button>
             <button class="filter-btn" data-category="Chapters">Chapters</button>
-            <button class="filter-btn" data-category="PV">PV</button>
+            <button class="filter-btn" data-category="PV">PV/预告片</button>
             <button class="filter-btn" data-category="Slots">Slots</button>
-            <button class="filter-btn" data-category="合成类">合成类</button>
-            <button class="filter-btn" data-category="小游戏">小游戏</button>
+            <button class="filter-btn" data-category="XiaoYouXi">小游戏</button>
         </div>
+        
         <div class="work-items">
-            <div class="work-item 影像相关">
-                <video src="assets/videos/sample1.mp4" controls></video>
-                <p>影像相关示例</p>
+            <div class="work-item YingXiang">
+                <iframe src="https://www.youtube.com/embed/YOUR_YOUTUBE_ID_1" frameborder="0" allowfullscreen></iframe>
+                <p>项目 A：欧美市场买量视频（影像）</p>
             </div>
+            
             <div class="work-item Chapters">
-                <video src="assets/videos/sample2.mp4" controls></video>
-                <p>Chapters 示例</p>
+                <iframe src="https://www.youtube.com/embed/YOUR_YOUTUBE_ID_2" frameborder="0" allowfullscreen></iframe>
+                <p>项目 B：Chapters 创意素材</p>
             </div>
+
             <div class="work-item PV">
-                <video src="assets/videos/sample3.mp4" controls></video>
-                <p>PV 示例</p>
+                <iframe src="https://www.youtube.com/embed/YOUR_YOUTUBE_ID_3" frameborder="0" allowfullscreen></iframe>
+                <p>项目 C：游戏官方 PV</p>
             </div>
+
+            <div class="work-item Slots">
+                <iframe src="https://www.youtube.com/embed/YOUR_YOUTUBE_ID_4" frameborder="0" allowfullscreen></iframe>
+                <p>项目 D：Slots 玩法视频</p>
+            </div>
+            
         </div>
     </section>
 

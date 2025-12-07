@@ -1,38 +1,332 @@
+/* ----------------- CSS 变量定义 (高级配色与间距) ----------------- */
+:root {
+    --primary-color: #007AFF; /* 主色调：亮眼且专业的蓝色 */
+    --accent-color: #FF5D73; /* 强调色：用于高亮、按钮悬停 */
+    --background-light: #F9FAFB; /* 背景色：极浅灰色，增加呼吸感 */
+    --text-dark: #1E293B; /* 文本颜色：深蓝灰色，高对比度 */
+    --spacing-huge: 100px;
+    --spacing-large: 40px;
+    --spacing-medium: 24px;
+}
+
 /* ----------------- 基础布局 ----------------- */
-body { font-family: 'Segoe UI', sans-serif; margin:0; padding:0; background:#F8FAFF; color:#333; }
-header { display:flex; justify-content:space-between; padding:20px 40px; background:#fff; box-shadow:0 2px 8px rgba(0,0,0,0.08);}
-header a { margin-left:20px; text-decoration:none; color:#333; font-weight:500; transition:0.3s; }
-header a:hover { color:#5A8DEE; transform:scale(1.05); }
-header .logo a { font-weight:bold; font-size:20px; color:#5A8DEE; }
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-/* ----------------- 简介布局 ----------------- */
-#profile { display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; padding:60px 40px; }
-.profile-left { width:60%; padding-right:20px; }
-.profile-right { width:35%; }
-.profile-right img { width:100%; border-radius:12px; box-shadow:0 8px 20px rgba(0,0,0,0.12); transition:transform 0.3s; }
-.profile-right img:hover { transform:scale(1.03); }
+body {
+    font-family: 'Inter', 'Segoe UI', sans-serif; 
+    background: var(--background-light);
+    color: var(--text-dark);
+    line-height: 1.6;
+}
 
-/* ----------------- 高级配色文字 ----------------- */
-.highlight { color:#5A8DEE; font-weight:bold; }
-.important { color:#FF758F; font-weight:bold; }
+.container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 5%; /* 确保左右有边距 */
+}
 
-/* ----------------- 工作经历 ----------------- */
-.job { margin-bottom:40px; padding:20px; background:#fff; border-radius:12px; box-shadow:0 4px 12px rgba(0,0,0,0.06); transition:transform 0.3s; }
-.job:hover { transform:translateY(-3px); }
-.job ul { margin-top:10px; list-style: disc inside; }
+/* ----------------- 头部导航 ----------------- */
+header {
+    background: white;
+    box-shadow: 0 1px 10px rgba(0, 0, 0, 0.05);
+    padding: 15px 0; /* 垂直居中 */
+    position: sticky;
+    top: 0;
+    z-index: 50;
+}
 
-/* ----------------- 作品集 ----------------- */
-.work-filters { margin-bottom:25px; }
-.work-filters button { padding:10px 18px; margin-right:10px; border:1px solid #5A8DEE; background:#fff; color:#5A8DEE; border-radius:8px; cursor:pointer; transition:0.3s; font-weight:500;}
-.work-filters button.active, .work-filters button:hover { background:#5A8DEE; color:#fff; }
-.work-items { display:flex; flex-wrap:wrap; gap:20px; }
-.work-item { width:calc(33% - 20px); text-align:center; display:none; }
-.work-item video { width:100%; border-radius:8px; box-shadow:0 6px 15px rgba(0,0,0,0.1); transition: transform 0.3s; }
-.work-item video:hover { transform:scale(1.05); }
+.nav-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
 
-/* ----------------- 前端密码 ----------------- */
-#password-overlay { position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.6); display:flex; justify-content:center; align-items:center; z-index:1000; }
-.password-box { background:#fff; padding:30px 40px; border-radius:12px; text-align:center; box-shadow:0 6px 15px rgba(0,0,0,0.1);}
-#password-input { padding:10px 15px; border-radius:6px; border:1px solid #ccc; margin-top:10px; width:200px; }
-#password-submit { margin-top:15px; padding:8px 20px; border:none; border-radius:6px; background:#5A8DEE; color:#fff; cursor:pointer; transition:0.3s; }
-#password-submit:hover { background:#3a68c1; }
+header .logo a {
+    font-weight: 900; 
+    font-size: 1.6rem;
+    color: var(--primary-color);
+}
+
+header nav a {
+    margin-left: var(--spacing-medium);
+    font-size: 1rem;
+    text-decoration: none;
+    color: var(--text-dark);
+    transition: color 0.2s, transform 0.2s;
+}
+
+header nav a:hover {
+    color: var(--primary-color);
+    transform: translateY(-2px);
+}
+
+/* ----------------- 简介与简历 (Profile) ----------------- */
+#profile {
+    display: grid;
+    /* 非对称构图：左侧信息宽，右侧图片窄 */
+    grid-template-columns: 2fr 1fr; 
+    gap: var(--spacing-large);
+    padding: var(--spacing-huge) 5%; /* 巨大的垂直留白，增加高级感 */
+}
+
+.profile-left h1 {
+    font-size: 4.2rem;
+    font-weight: 900;
+    line-height: 1.1;
+    color: var(--text-dark);
+    margin-bottom: var(--spacing-medium);
+}
+
+.profile-left .summary {
+    font-size: 1.15rem;
+    color: #4B5563;
+    max-width: 700px;
+    margin-bottom: var(--spacing-large);
+}
+
+.profile-right {
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-start;
+}
+
+.profile-right img {
+    max-width: 100%;
+    aspect-ratio: 1 / 1; 
+    object-fit: cover;
+    border-radius: 12px;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+}
+
+/* ----------------- 工作经历与技能卡片 ----------------- */
+.job-container h2 {
+    font-size: 1.8rem;
+    color: var(--text-dark);
+    margin-top: var(--spacing-large);
+    margin-bottom: var(--spacing-medium);
+    padding-bottom: 5px;
+    border-bottom: 2px solid #E5E7EB;
+}
+
+.job { 
+    margin-bottom: var(--spacing-medium); 
+    padding: var(--spacing-medium); 
+    background: white;
+    border-left: 5px solid var(--primary-color); /* 强调时间线 */
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.04);
+    transition: all 0.2s;
+}
+
+.job:hover { 
+    transform: translateY(-5px); 
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+}
+
+.job h3 {
+    color: var(--primary-color);
+    margin-bottom: 5px;
+    font-weight: 700;
+}
+
+.job ul { 
+    list-style: none;
+    padding-left: 0; 
+}
+.job ul li {
+    margin-bottom: 8px;
+    font-size: 1rem;
+    color: #4B5563;
+}
+.job ul li:before {
+    content: "•";
+    color: var(--accent-color);
+    font-weight: bold;
+    display: inline-block; 
+    width: 1em;
+    margin-left: -1em;
+}
+
+.highlight { color: var(--primary-color); font-weight: 700; }
+.important { color: var(--accent-color); font-weight: 700; }
+
+
+/* ----------------- 作品集 (Work) ----------------- */
+#work {
+    padding: var(--spacing-large) 5% 100px;
+}
+
+#work h2 {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: var(--spacing-large);
+    color: var(--text-dark);
+}
+
+.work-filters { 
+    margin-bottom: var(--spacing-large); 
+    text-align: center;
+}
+
+.work-filters button { 
+    padding: 10px 25px; 
+    margin: 8px 6px; 
+    border: none;
+    background: #E5E7EB; 
+    color: var(--text-dark);
+    border-radius: 50px; /* 全圆角药丸按钮 */
+    cursor: pointer; 
+    font-weight: 600;
+    transition: background 0.2s, color 0.2s;
+}
+
+.work-filters button.active, .work-filters button:hover { 
+    background: var(--primary-color); 
+    color: white; 
+}
+
+.work-items { 
+    display: grid;
+    /* 灵活网格布局，最小宽度 300px，自动调整列数 */
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px; 
+}
+
+.work-item { 
+    text-align: center; 
+    display: none; 
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.work-item:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+}
+
+/* 视频/嵌入容器样式 */
+.work-item iframe { 
+    width: 100%; 
+    height: 220px; 
+    display: block; 
+    object-fit: cover;
+    border: none;
+}
+
+.work-item p {
+    padding: 15px;
+    font-weight: 600;
+    font-size: 1.05rem;
+    color: var(--text-dark);
+}
+
+/* ----------------- 前端密码保护 ----------------- */
+#password-overlay { 
+    position:fixed; 
+    top:0; 
+    left:0; 
+    width:100%; 
+    height:100%; 
+    background:rgba(0,0,0,0.9); 
+    display:flex; 
+    justify-content:center; 
+    align-items:center; 
+    z-index:1000; 
+}
+
+.password-box { 
+    background:#fff; 
+    padding:40px 50px; 
+    border-radius:12px; 
+    text-align:center; 
+    box-shadow:0 10px 30px rgba(0,0,0,0.3);
+    color: var(--text-dark);
+}
+
+.password-box h2 {
+    color: var(--primary-color);
+    margin-bottom: 10px;
+}
+
+#password-input { 
+    padding:12px 15px; 
+    border-radius:6px; 
+    border:1px solid #ccc; 
+    margin-top:20px; 
+    width:250px;
+    font-size: 1rem;
+}
+
+#password-submit { 
+    margin-top:20px; 
+    padding:10px 25px; 
+    border:none; 
+    border-radius:6px; 
+    background:var(--primary-color); 
+    color:#fff; 
+    cursor:pointer; 
+    transition:0.3s; 
+    font-weight: 600;
+}
+
+#password-submit:hover { 
+    background:var(--accent-color); 
+}
+
+/* ----------------- 响应式布局 (RWD) ----------------- */
+
+@media (max-width: 992px) {
+    /* 平板电脑优化 */
+    #profile {
+        grid-template-columns: 1fr; /* 垂直堆叠 */
+        gap: var(--spacing-medium);
+        padding: 60px 5%;
+    }
+    .profile-left { order: 2; }
+    .profile-right { order: 1; margin: 0 auto 30px; }
+    .profile-right img { max-width: 300px; }
+    
+    .work-items {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    }
+}
+
+@media (max-width: 576px) {
+    /* 手机优化 */
+    .profile-left h1 {
+        font-size: 3rem;
+    }
+
+    header .logo a {
+        font-size: 1.4rem;
+    }
+    
+    header nav {
+        display: none; /* 在手机上隐藏导航，使用滚动定位 */
+    }
+
+    .work-filters {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    .work-filters button {
+        margin: 5px 3px;
+    }
+    
+    .work-items {
+        /* 手机单列 */
+        grid-template-columns: 1fr;
+    }
+    
+    .work-item iframe {
+        height: 250px; 
+    }
+}
