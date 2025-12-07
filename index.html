@@ -1,113 +1,194 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="zh">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>薛亚丽 | 创意设计师作品集</title>
-<link rel="stylesheet" href="style.css">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>薛亚丽 - 视频创意设计师作品集</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&display=swap" rel="stylesheet">
 </head>
 <body>
 
-<div id="password-overlay">
-    <div class="password-box">
-        <h2>请输入访问密码</h2>
-        <p>此作品集仅对特定人士开放。</p>
-        <input type="password" id="password-input" placeholder="密码">
-        <button id="password-submit">进入作品集</button>
-    </div>
+<div id="password-container">
+  <div id="password-box">
+    <h2>欢迎访问</h2>
+    <p>此作品集为私密内容，请输入密码</p>
+    <input type="password" id="password-input" placeholder="密码">
+    <button id="password-submit-btn">进入</button>
+    <p id="password-message" style="color:var(--accent-color);"></p>
+  </div>
 </div>
 
 <div id="site-content" style="display:none;">
 
-    <header>
-        <div class="nav-content container">
-            <div class="logo"><a href="#">薛亚丽 | 创意设计</a></div>
-            <nav>
-                <a href="#profile">简介/简历</a>
-                <a href="#work">作品集</a>
-            </nav>
-        </div>
-    </header>
+    <header class="container">
+    <div class="logo">薛亚丽 | Buy-Side Creative</div>
+    <nav>
+      <a href="#profile">简介</a>
+      <a href="#advantages">优势</a>
+      <a href="#experience">经验</a>
+      <a href="#works">作品</a>
+    </nav>
+  </header>
 
-    <section id="profile" class="container">
-        <div class="profile-left">
-            <h1>薛亚丽</h1>
-            <p class="summary">
-                一位专注于**游戏买量视频**与**创意策划**的资深设计师。拥有 <span class="highlight">4年游戏买量经验</span>，熟悉欧美及亚太市场，具备独立的创意策划与视频设计能力。精通各类主流软件与前沿技术。
-            </p>
+    <section id="profile" class="hero container">
+    <div class="hero-left">
+      <h1>薛亚丽</h1>
+      <h2>视频创意设计师 / <span class="highlight">游戏买量素材专家</span></h2>
+      <p class="tagline">专注海外市场视频广告创意策划与制作</p>
+      
+      <div class="skills-bar">
+          <p class="skills-label">核心技能：</p>
+          <span class="skill-tag">AE/PS/AI</span>
+          <span class="skill-tag">UE/Unity/Maya</span>
+          <span class="skill-tag">AIGC</span>
+          <span class="skill-tag">Data-Driven Creative</span>
+      </div>
 
-            <div class="job-container">
-                <h2>核心技能</h2>
-                <div class="job skills">
-                    <ul>
-                        <li><span class="highlight">平面/动效：</span>AE, PS, AI, Spine</li>
-                        <li><span class="highlight">3D/引擎：</span>UE, Unity, Maya, 3DMax, Blender, C4D</li>
-                        <li><span class="highlight">创意策划：</span>独立完成从概念到成品的全流程，深度理解买量逻辑。</li>
-                    </ul>
-                </div>
+      <div class="contact-info">
+        <p>📞 +8613159539391</p>
+        <p>📧 Yali7531@163.com</p>
+      </div>
+    </div>
+    <div class="hero-right">
+      <img src="assets/images/01.jpg" alt="薛亚丽照片">
+    </div>
+  </section>
 
-                <h2>工作经历</h2>
-                <div class="job">
-                    <h3>创意总监 | 某知名游戏公司 (2022 - 至今)</h3>
-                    <ul>
-                        <li>主导欧美市场所有买量素材创意，ROI提升<span class="important">15%</span>。</li>
-                        <li>培养并指导创意团队，建立了高效的素材产出流程。</li>
-                    </ul>
-                </div>
-                <div class="job">
-                    <h3>资深设计师 | 某头部互联网公司 (2018 - 2022)</h3>
-                    <ul>
-                        <li>负责 Chapters、Slots 等核心项目的视频制作与合成。</li>
-                        <li>独立完成多款小游戏推广视频，累计曝光量超过 1 亿。</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-
-        <div class="profile-right">
-            <img src="assets/images/01.jpg" alt="薛亚丽专业照片">
-        </div>
-    </section>
-
-    <section id="work" class="container">
-        <h2>精选作品集</h2>
-        
-        <div class="work-filters">
-            <button class="filter-btn" data-category="all">全部作品</button>
-            <button class="filter-btn" data-category="YingXiang">影像相关</button>
-            <button class="filter-btn" data-category="Chapters">Chapters</button>
-            <button class="filter-btn" data-category="PV">PV/预告片</button>
-            <button class="filter-btn" data-category="Slots">Slots</button>
-            <button class="filter-btn" data-category="XiaoYouXi">小游戏</button>
+    <section id="advantages-education" class="container">
+    <div class="two-col-grid">
+        <div id="advantages">
+            <h2>个人优势</h2>
+            <ul>
+                <li><span class="icon">✅</span> 4年的游戏买量行业经验，熟悉欧美及亚太日韩港台市场</li>
+                <li><span class="icon">✅</span> 擅长平面、视频、3D结合，独立创意策划与视频设计能力强</li>
+                <li><span class="icon">✅</span> 适应能力和执行力强，注重细节把握，表达沟通与协调能力优秀</li>
+                <li><span class="icon">✅</span> 团队精神佳，责任心强，抗压能力突出</li>
+                <li><span class="icon">✅</span> 自学游戏特效及 AIGC 工具，快速掌握新技能</li>
+                <li><span class="icon">✅</span> ACG、动漫、电影、游戏爱好者</li>
+            </ul>
         </div>
         
-        <div class="work-items">
-            <div class="work-item YingXiang">
-                <iframe src="https://www.youtube.com/embed/YOUR_YOUTUBE_ID_1" frameborder="0" allowfullscreen></iframe>
-                <p>项目 A：欧美市场买量视频（影像）</p>
+        <div id="education">
+            <h2>教育背景</h2>
+            <div class="job education-card">
+                <h3>本科，吉林动画学院</h3>
+                <ul>
+                    <li>第11届全国大学生广告艺术大赛《奇迹东方今朝义乌》动画类全国三等奖</li>
+                    <li>吉林省“创先争优”表彰大会获“优秀学生干部”</li>
+                    <li>吉林省五四“创先争优”表彰大会荣获“优秀学生”</li>
+                </ul>
             </div>
-            
-            <div class="work-item Chapters">
-                <iframe src="https://www.youtube.com/embed/YOUR_YOUTUBE_ID_2" frameborder="0" allowfullscreen></iframe>
-                <p>项目 B：Chapters 创意素材</p>
-            </div>
-
-            <div class="work-item PV">
-                <iframe src="https://www.youtube.com/embed/YOUR_YOUTUBE_ID_3" frameborder="0" allowfullscreen></iframe>
-                <p>项目 C：游戏官方 PV</p>
-            </div>
-
-            <div class="work-item Slots">
-                <iframe src="https://www.youtube.com/embed/YOUR_YOUTUBE_ID_4" frameborder="0" allowfullscreen></iframe>
-                <p>项目 D：Slots 玩法视频</p>
-            </div>
-            
         </div>
-    </section>
+    </div>
+  </section>
 
+    <section id="experience" class="container">
+    <h2>工作经验</h2>
+
+    <div class="timeline-container">
+        <div class="job timeline-item">
+          <h3>美图公司 | 海外渠道增长部 <span class="date">2025.04~至今</span></h3>
+          <div class="job-content">
+            <p><strong>工作描述：</strong></p>
+            <ul>
+              <li>全面负责全球买量素材创意策略，从目标用户角度设计并优化广告创意</li>
+              <li>独立制定素材策略与创意规划，结合投放数据实时优化素材方向</li>
+              <li>深入分析竞品与市场动态，洞察用户行为与心理画像，精准迭代创意方案</li>
+              <li>领导创意产出和外包团队，包括脚本分镜编写、效果验收及素材整合</li>
+              <li>主要负责产品：Meitu, BeautyCam, Wink, Vmake, Starii, Snappass, X-design</li>
+              <li>投放地区：欧美（美国、巴西、墨西哥）、亚太（日本、韩国、台湾）、东南亚（泰国、越南、印度尼西亚）</li>
+              <li>海外平台投放：Facebook、Google、TikTok、Line、Yahoo 等</li>
+              <li>视频创意策划与制作全流程把控</li>
+              <li>担任团队导师角色，负责新人培养、创意指导、技术培训及市场策略分享</li>
+            </ul>
+            <p><strong>业绩成就：</strong></p>
+            <ul class="achievements">
+              <li>广告素材日消耗达 <span class="highlight-data">2000+ 美金</span></li>
+              <li>主动引入并熟练运用 <span class="highlight-data">AIGC 新工具</span>（Sora、Gemini 等），将创意制作效率提升数倍</li>
+              <li>通过日本大头贴效果调研报告，推动产品端迭代，实现本地化大头贴效果落地并提升用户体验</li>
+              <li>自主开发高效小工具，可一键改尺寸、加落版、替换背景音乐，提高整体素材处理效率</li>
+              <li>多次带领团队突破创意瓶颈，实现高效产出和跨部门协作</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="job timeline-item">
+          <h3>深圳冰川网络股份有限公司 | 海外发行部门 <span class="date">2022.07~2024.10</span></h3>
+          <div class="job-content">
+            <p><strong>工作描述：</strong></p>
+            <ul>
+              <li>主导海外游戏买量素材创意策略，从用户视角出发设计全链路广告创意</li>
+              <li>定期分析数据（消耗、点击、转化、回收），优化广告素材方向</li>
+              <li>主要负责产品：《Merge Tour》,《Impact: Infinity Legends》,《X-Hero》,《Cash Hunter》</li>
+              <li>跨平台（Facebook/Google/TikTok/Line/Yahoo）视频制作及创意把控</li>
+              <li>负责团队新人培训、创意指导及技术支持</li>
+            </ul>
+            <p><strong>业绩成就：</strong></p>
+            <ul class="achievements">
+              <li>《Merge Tour》广告素材点击率达 <span class="highlight-data">3%-4%</span>，其他素材 Facebook 平台点击率稳定在 1%</li>
+              <li>年度素材消耗 <span class="highlight-data">150~200 万美金</span>；《Impact: Infinity Legends》季度消耗 50 万美金</li>
+              <li>主导日语地区从 0-1 宣发，实现快速市场突破</li>
+              <li>创新引入 AIGC 工具及插件，为团队提供全新创意方向</li>
+              <li>多次带领团队探索创意边界，实现广告效果持续提升</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="job timeline-item">
+          <h3>北京枫悦互动科技有限公司 | 用户增长部门 <span class="date">2020.12~2022.06</span></h3>
+          <div class="job-content">
+            <p><strong>工作描述：</strong></p>
+            <ul>
+              <li>负责《Chapters》海外各平台视频广告创意策划及制作</li>
+              <li>主导欧美女性用户广告创意设计，分析用户痛点与心理偏好</li>
+              <li>跟踪广告投放数据，优化素材表现并提供创意迭代方案</li>
+            </ul>
+            <p><strong>业绩成就：</strong></p>
+            <ul class="achievements">
+              <li>广告素材点击率稳定 <span class="highlight-data">1%</span></li>
+              <li>成功设计“欧美型霸总故事”广告系列，深度契合目标用户心理</li>
+            </ul>
+          </div>
+        </div>
+    </div>
+  </section>
+
+    <section id="works" class="container">
+    <h2>精选作品集</h2>
+    <p class="placeholder">这里将展示您的视频和图片作品。请在作品集区域添加您之前准备的筛选按钮和视频 iframe 嵌入代码。</p>
+  </section>
 </div>
 
-<script src="script.js"></script>
+<script>
+    const PASSWORD = "1234"; 
+    
+    document.addEventListener('DOMContentLoaded', () => {
+        const passwordContainer = document.getElementById('password-container');
+        const siteContent = document.getElementById('site-content');
+        const passwordInput = document.getElementById('password-input');
+        const passwordSubmitBtn = document.getElementById('password-submit-btn');
+        const passwordMessage = document.getElementById('password-message');
+
+        passwordSubmitBtn.addEventListener('click', checkPassword);
+        passwordInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                checkPassword();
+            }
+        });
+
+        function checkPassword() {
+            const input = passwordInput.value;
+            if(input === PASSWORD) {
+                passwordContainer.style.display = 'none';
+                siteContent.style.display = 'block';
+            } else {
+                passwordMessage.innerText = "密码错误，请重试";
+                passwordInput.value = '';
+            }
+        }
+    });
+</script>
+
 </body>
 </html>
